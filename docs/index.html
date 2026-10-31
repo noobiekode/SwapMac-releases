@@ -163,6 +163,33 @@
   details[open] summary::after { content: "–"; }
   details p { color: var(--muted); margin: 12px 0 0; }
 
+  /* First launch guide */
+  .launch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: left; }
+  .launch > * { min-width: 0; }
+  .launch .step p { margin-bottom: 16px; }
+  .mock { border-radius: 14px; border: 1px solid var(--line); background: var(--bg); padding: 16px; font-size: 13.5px; line-height: 1.45; }
+  .mock .warn { width: 34px; height: 34px; margin-bottom: 8px; color: #e0a100; }
+  .mock strong { display: block; color: var(--text); margin-bottom: 4px; }
+  .mock .muted { color: var(--muted); }
+  .mock .btn { display: block; text-align: center; margin-top: 12px; padding: 7px 10px; border-radius: 8px; font-weight: 600; font-size: 13px;
+    background: #2f6df6; color: #fff; }
+  .mock .btn.light { display: inline-block; background: var(--card); color: var(--text); border: 1px solid var(--line); margin-top: 8px; }
+  .mock .crumb { color: var(--faint); font-size: 12.5px; margin-bottom: 10px; }
+  .mock .ring { outline: 2.5px solid var(--accent); outline-offset: 3px; }
+  .mock .pw { margin-top: 6px; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); letter-spacing: 3px; color: var(--muted); }
+  .launch-note { max-width: 760px; margin: 28px auto 0; color: var(--muted); font-size: 15.5px; }
+  .launch-note details { text-align: left; margin-top: 14px; }
+  .launch-note code { font: 13.5px ui-monospace, "SF Mono", Menlo, monospace; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: block; margin-top: 10px; overflow-x: auto; color: var(--text); }
+  @media (max-width: 900px) { .launch { grid-template-columns: 1fr; } }
+
+  /* Note shown after Download is clicked */
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 140%); z-index: 30; width: min(520px, calc(100% - 32px));
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 16px 44px 16px 18px;
+    font-size: 15px; color: var(--muted); transition: transform .35s ease; }
+  .toast.show { transform: translate(-50%, 0); }
+  .toast strong { color: var(--text); display: block; margin-bottom: 2px; }
+  .toast button { position: absolute; top: 10px; right: 10px; border: 0; background: none; color: var(--faint); font-size: 22px; line-height: 1; cursor: pointer; padding: 4px 8px; }
+
   /* Closing call to action and footer */
   .closing { text-align: center; background: var(--stage); }
   .closing h2 { max-width: 760px; margin: 0 auto 14px; }
@@ -213,7 +240,8 @@
         Download free</a>
       <a class="button ghost buy" href="#pricing">Get Pro · $19.99 once</a>
     </div>
-    <p class="fine">Every Pro feature free for 14 days, no card needed. macOS 14 Sonoma or later · Apple silicon and Intel</p>
+    <p class="fine">Every Pro feature free for 14 days, no card needed. macOS 14 Sonoma or later · Apple silicon and Intel<br>
+      Opening it for the first time? <a href="#first-launch">Here's the one extra step</a>.</p>
     <ul class="trust">
       <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>Scans never leave your Mac</li>
       <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h12M8 6V4h4v2M5.5 6l.8 10h7.4l.8-10"/></svg>Everything goes to the Trash first</li>
@@ -224,6 +252,55 @@
     </div>
   </div>
 </header>
+
+<section class="alt" id="first-launch">
+  <div class="wrap center">
+    <p class="eyebrow">First launch</p>
+    <h2>Opening SwapMac the first time</h2>
+    <p class="sub">SwapMac isn't notarized by Apple yet, so macOS asks you to confirm it once. It takes about 20 seconds, and you never need to do it again, not even after updates.</p>
+    <div class="launch">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Open SwapMac, then click Done</h3>
+        <p>Drag SwapMac to Applications and open it. macOS says it couldn't verify the app. Click Done; nothing is wrong with your Mac.</p>
+        <div class="mock" aria-hidden="true">
+          <svg class="warn" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1.8 20.5h20.4z"/><path d="M12 9.5v5M12 17.3v.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          <strong>"SwapMac.app" Not Opened</strong>
+          <span class="muted">Apple could not verify "SwapMac.app" is free of malware…</span>
+          <span class="btn ring">Done</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Find it in Privacy &amp; Security</h3>
+        <p>Open System Settings → Privacy &amp; Security and scroll down to Security. Click <strong>Open Anyway</strong> next to SwapMac.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="crumb">System Settings › Privacy &amp; Security › Security</div>
+          <span class="muted">"SwapMac.app" was blocked to protect your Mac.</span><br>
+          <span class="btn light ring">Open Anyway</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Confirm with your password</h3>
+        <p>Enter your Mac's password, then click <strong>Open Anyway</strong> once more. SwapMac opens, and from now on it opens normally.</p>
+        <div class="mock" aria-hidden="true">
+          <strong>Privacy &amp; Security</strong>
+          <span class="muted">Enter your password to allow this.</span>
+          <div class="pw">••••••••</div>
+          <span class="btn ring">Open Anyway</span>
+        </div>
+      </div>
+    </div>
+    <div class="launch-note">
+      Why does this happen? Apple checks apps whose developers pay for its developer program. SwapMac will be notarized soon; until then, every download is the same file you see here, signed so that only genuine SwapMac updates can install.
+      <details><summary>Prefer Terminal?</summary>
+        <p>After moving SwapMac to Applications, this removes the download flag so it opens straight away:</p>
+        <code>xattr -dr com.apple.quarantine /Applications/SwapMac.app</code>
+      </details>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -424,7 +501,21 @@
   </div>
 </footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <button type="button" aria-label="Close">×</button>
+  <strong>Your download is starting</strong>
+  The first time you open SwapMac, macOS asks you to confirm it once. <a href="#first-launch">See the 3 steps</a>.
+</div>
+
 <script>
+  // After Download is clicked, point to the first-launch steps. The download itself isn't held up.
+  const toast = document.getElementById("toast");
+  for (const link of document.querySelectorAll("a.download")) {
+    link.addEventListener("click", () => toast.classList.add("show"));
+  }
+  toast.querySelector("button").addEventListener("click", () => toast.classList.remove("show"));
+  toast.querySelector("a").addEventListener("click", () => toast.classList.remove("show"));
+
   // The Dodo Payments product for SwapMac Pro ("pdt_…"). Until it's set, Buy Pro points to the download.
   const DODO_PRODUCT_ID = "pdt_0NqvT3eCpPuE8OEOzvIyv";
   for (const link of document.querySelectorAll("a.buy")) {
