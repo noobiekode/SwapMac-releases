@@ -3,6 +3,28 @@
     <channel>
         <title>SwapMac</title>
         <item>
+            <title>0.3.5</title>
+            <pubDate>Sun, 01 Nov 2026 03:14:24 +0530</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.3.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's new in SwapMac 0.3.5</h3>
+<ul>
+<li><b>Cleanup History opens again:</b> clicking it in the sidebar did nothing in recent versions. It also laid out off the screen when it had something to show. Both fixed.</li>
+<li><b>No more off-screen windows:</b> the fix behind that now covers every screen, so a note or a long line can never push the sidebar out of the window again.</li>
+<li><b>License keys are checked more carefully:</b> a key file copied from another Mac uses one of the key's three seats or is refused, and a key the server no longer recognises stops working right away. Nothing changes for keys bought and entered the normal way.</li>
+</ul>
+]]></description>
+            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.5.dmg" length="8158526" type="application/octet-stream" sparkle:edSignature="yOmw4sflhYP4o0d2hOv4hydYnycNGy2bcSpm2TKjEXrQ6T+sGfFaaiKl2veggzgaF3Db1IymdAtvOdnbroklAQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac9-8.delta" sparkle:deltaFrom="8" length="672266" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="agKSEigstp+VTrydNPZVQ6zgBpjp2NNOSpoLwlOz9tTe1Bbli0FobuXP5/Pn0ZkIvZVBTf61kO/fw97mVO1PAg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac9-7.delta" sparkle:deltaFrom="7" length="883986" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="DLGIZThQE9UuCwJuCaD9tRTBSWbLnm4ub8ZZ6mJYU0MhQXx6iya0STEulvieGNes4H2puQpeRQ4I0C/PW7ZYDg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac9-6.delta" sparkle:deltaFrom="6" length="928510" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="sTIBqsgnYq94wrOh3EFaby/I+YryIWvTvU9uLca5gmS/mFQTY4qMWiyWs4QLaZz9ikRH0CJqmOPx4RrCkuoxDg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac9-5.delta" sparkle:deltaFrom="5" length="964406" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="FqJoNtthd0UKuY3UjFQBg8LVcCORDwi8hkhfqhyFxgSynUfe0ffR0qzJhEMsIeJE6r5+9GLXUy3+oWs37zyHCg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac9-4.delta" sparkle:deltaFrom="4" length="1020222" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="PYbbXMW5KbFPWXCnZXKGqBvtZQzKrUnP46HkLPNLCgTFj/m3ig3gOswUytpEFjjBACEZk8tNxsV9ZeRg7BCxBQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.3.4</title>
             <pubDate>Sun, 01 Nov 2026 02:34:35 +0530</pubDate>
             <sparkle:version>8</sparkle:version>
@@ -42,27 +64,6 @@
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-4.delta" sparkle:deltaFrom="4" length="821626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="40El+BRhbbBo9BssX7e8omvmC+0WQYAE+02nv73hnsm5V8bZhRw23d2YG7/k6rCQPc3RdBp4VKiXDSLX2WnCBw=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-3.delta" sparkle:deltaFrom="3" length="1357654" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="pmghFKAB9Zt3LyT+KBTd7GQgEiVS1GvgO8VJhtYI8O7a30JjiA16gUqIY6miUi/ocT9CW9yJe5ZoXO45ZH1sBw=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-2.delta" sparkle:deltaFrom="2" length="1557394" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="jFiRmXluvAxzeyWUMiz1bJM4uPbMWDKoUY7G4sTYJDvb2I8k9ru+vK5fpGyVK7AjhJWiHR7tPDqZgY1WlAbpCw=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.3.2</title>
-            <pubDate>Sun, 01 Nov 2026 00:42:15 +0530</pubDate>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>0.3.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h3>What's new in SwapMac 0.3.2</h3>
-<ul>
-<li><b>Full Disk Access stays on after updates:</b> until now, macOS turned it off with every update. Please turn it on one last time: in System Settings → Privacy &amp; Security → Full Disk Access, remove SwapMac with the − button, add it again with +, then reopen SwapMac. From this version on, it stays on.</li>
-<li><b>Fixed:</b> after reopening SwapMac without Full Disk Access, the window could get stuck with an empty sidebar and the top of the page out of reach.</li>
-</ul>
-]]></description>
-            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.2.dmg" length="8068949" type="application/octet-stream" sparkle:edSignature="JI5ly9oHpFr1yjppEA9o/XwPnoKu7Svk09rQ8syLRMJLmVMp32pwtpChNX2e0IuPYZsY3zI2VdFXPzmfUrYnCw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-5.delta" sparkle:deltaFrom="5" length="516886" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="7sITIuMkhzBA4oJYh6ElFmBB1XbayjsujzWbyx5NeAXSd0JklqkgvenFROLNlIUE4ZnvACKyRtCbBQXy4ulMBw=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-4.delta" sparkle:deltaFrom="4" length="721878" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="+juMG1AodxDN7XIZxilGjMT06yhC8TesV6AV3JYDDh7yuxv2T/PgIzg3TAwU3c63rpY9nOZyehWLUF3HeJpJBA=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-3.delta" sparkle:deltaFrom="3" length="1334030" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="r3ZTmvaphp7sdcgSz0YPJGcebjsuAvDE7GxvxRmuOamgMokrzpSRYBHjCdPlshbehFmB57YTxkjc+F7gt6zAAg=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-2.delta" sparkle:deltaFrom="2" length="1529626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="eX6JrFtBqQffrzQPXUwN3FZB4fNn5i55G7XSOUQKs3mzDxU5Z2/0K4Vsg6ES1WZcACzB00Wbd8pUW6ITy8/rDg=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-1.delta" sparkle:deltaFrom="1" length="2299590" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="JrdJiE41JM3FIjgndJFJSUCZ++T7J8KZ81aeRvf5BPMhfwzMEnWrqtkvYPkYhSZPiMha2d03BiaceMbrsMXmDA=="/>
             </sparkle:deltas>
         </item>
     </channel>
