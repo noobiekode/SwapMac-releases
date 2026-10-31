@@ -3,6 +3,26 @@
     <channel>
         <title>SwapMac</title>
         <item>
+            <title>0.2.1</title>
+            <pubDate>Sat, 31 Oct 2026 20:37:06 +0530</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's new in SwapMac 0.2.1</h3>
+<ul>
+<li><b>Quieter in the background:</b> with its window closed, SwapMac now uses no CPU at all. Live numbers refresh only while you can see them, and more slowly on battery and in Low Power Mode.</li>
+<li><b>Activity:</b> a new screen listing cleanups, uninstalls, put-backs, items about to leave the Trash, and updates, each with one thing you can do about it.</li>
+<li><b>Settings → Monitoring:</b> turn live numbers off, choose how often they refresh, see what SwapMac itself uses, and choose notifications. They're off unless you turn them on, and never about buying anything.</li>
+<li><b>Optional low-space alert</b> when free space drops below 10 GB, at most once a day.</li>
+</ul>
+]]></description>
+            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.2.1.dmg" length="7460906" type="application/octet-stream" sparkle:edSignature="+ZxcbejUqyzHttbfHb8lHk7WzLyRD3jJvzcA/CDqKH8+tKS9fwgpTwDbvjh8xfZITN8OD/89OGQYMhGQqR6jAw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-2.delta" sparkle:deltaFrom="2" length="922406" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="poL+WZNwYP4ck3AaWS9q5hPzQuHRFeeOhcuQeaY1EdjpxLMC1oUDJ5S4I9cfUHjSyZBOndU/BLPpH3swcREaAg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-1.delta" sparkle:deltaFrom="1" length="1878538" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HRMMvORc3MFRGEFV6yDurGe7gBL44tn5q4FunxCx0DW3rXOYRY2q9QEr4dzxlXzbBInzCiAz0me6PCLU99ExAA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.2.0</title>
             <pubDate>Sat, 31 Oct 2026 20:02:24 +0530</pubDate>
             <sparkle:version>2</sparkle:version>
