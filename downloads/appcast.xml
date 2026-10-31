@@ -3,6 +3,27 @@
     <channel>
         <title>SwapMac</title>
         <item>
+            <title>0.3.2</title>
+            <pubDate>Sun, 01 Nov 2026 00:42:15 +0530</pubDate>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.3.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's new in SwapMac 0.3.2</h3>
+<ul>
+<li><b>Full Disk Access stays on after updates:</b> until now, macOS turned it off with every update. Please turn it on one last time: in System Settings → Privacy &amp; Security → Full Disk Access, remove SwapMac with the − button, add it again with +, then reopen SwapMac. From this version on, it stays on.</li>
+<li><b>Fixed:</b> after reopening SwapMac without Full Disk Access, the window could get stuck with an empty sidebar and the top of the page out of reach.</li>
+</ul>
+]]></description>
+            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.2.dmg" length="8068949" type="application/octet-stream" sparkle:edSignature="JI5ly9oHpFr1yjppEA9o/XwPnoKu7Svk09rQ8syLRMJLmVMp32pwtpChNX2e0IuPYZsY3zI2VdFXPzmfUrYnCw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-5.delta" sparkle:deltaFrom="5" length="516886" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="7sITIuMkhzBA4oJYh6ElFmBB1XbayjsujzWbyx5NeAXSd0JklqkgvenFROLNlIUE4ZnvACKyRtCbBQXy4ulMBw=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-4.delta" sparkle:deltaFrom="4" length="721878" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="+juMG1AodxDN7XIZxilGjMT06yhC8TesV6AV3JYDDh7yuxv2T/PgIzg3TAwU3c63rpY9nOZyehWLUF3HeJpJBA=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-3.delta" sparkle:deltaFrom="3" length="1334030" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="r3ZTmvaphp7sdcgSz0YPJGcebjsuAvDE7GxvxRmuOamgMokrzpSRYBHjCdPlshbehFmB57YTxkjc+F7gt6zAAg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-2.delta" sparkle:deltaFrom="2" length="1529626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="eX6JrFtBqQffrzQPXUwN3FZB4fNn5i55G7XSOUQKs3mzDxU5Z2/0K4Vsg6ES1WZcACzB00Wbd8pUW6ITy8/rDg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac6-1.delta" sparkle:deltaFrom="1" length="2299590" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="JrdJiE41JM3FIjgndJFJSUCZ++T7J8KZ81aeRvf5BPMhfwzMEnWrqtkvYPkYhSZPiMha2d03BiaceMbrsMXmDA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.3.1</title>
             <pubDate>Sun, 01 Nov 2026 00:12:38 +0530</pubDate>
             <sparkle:version>5</sparkle:version>
@@ -43,26 +64,6 @@
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-3.delta" sparkle:deltaFrom="3" length="1252526" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="2/fVCZHbYdDwZJc9fmyQBG3gMxPq4/SgjkosvU6fAzijYFP5LtZlqhdVZsN2fY8S4kqOx7D3G+3DBhuDZideAQ=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-2.delta" sparkle:deltaFrom="2" length="1463486" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Ae5ItfXDtswHW2PKe3OlcJUtcHe0zxNzmXR20RGkLX8CHrDcRIGelfJxpgxj8LPB6vKxwcDB4GC9wwvcdGrvDQ=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-1.delta" sparkle:deltaFrom="1" length="2281206" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Y5pxzOMmorfUJ6a1OvPfF3Ce83+vYRT1wssZo15lZliYsran3Xsj7FxXpy5XCn4X1LxM3rYSLmj0fKOyjmqhCQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.2.1</title>
-            <pubDate>Sat, 31 Oct 2026 20:37:06 +0530</pubDate>
-            <sparkle:version>3</sparkle:version>
-            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h3>What's new in SwapMac 0.2.1</h3>
-<ul>
-<li><b>Quieter in the background:</b> with its window closed, SwapMac now uses no CPU at all. Live numbers refresh only while you can see them, and more slowly on battery and in Low Power Mode.</li>
-<li><b>Activity:</b> a new screen listing cleanups, uninstalls, put-backs, items about to leave the Trash, and updates, each with one thing you can do about it.</li>
-<li><b>Settings → Monitoring:</b> turn live numbers off, choose how often they refresh, see what SwapMac itself uses, and choose notifications. They're off unless you turn them on, and never about buying anything.</li>
-<li><b>Optional low-space alert</b> when free space drops below 10 GB, at most once a day.</li>
-</ul>
-]]></description>
-            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.2.1.dmg" length="7460906" type="application/octet-stream" sparkle:edSignature="+ZxcbejUqyzHttbfHb8lHk7WzLyRD3jJvzcA/CDqKH8+tKS9fwgpTwDbvjh8xfZITN8OD/89OGQYMhGQqR6jAw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-2.delta" sparkle:deltaFrom="2" length="922406" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="poL+WZNwYP4ck3AaWS9q5hPzQuHRFeeOhcuQeaY1EdjpxLMC1oUDJ5S4I9cfUHjSyZBOndU/BLPpH3swcREaAg=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-1.delta" sparkle:deltaFrom="1" length="1878538" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HRMMvORc3MFRGEFV6yDurGe7gBL44tn5q4FunxCx0DW3rXOYRY2q9QEr4dzxlXzbBInzCiAz0me6PCLU99ExAA=="/>
             </sparkle:deltas>
         </item>
     </channel>
