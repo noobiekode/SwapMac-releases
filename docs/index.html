@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SwapMac: know what's filling your Mac</title>
+<meta name="description" content="SwapMac scans your Mac, explains every folder in plain English, and clears only what you approve. Everything goes to the Trash first. Free to try, $19.99 once for Pro.">
+<meta property="og:title" content="SwapMac: know what's filling your Mac">
+<meta property="og:description" content="Every folder explained in plain English. You review before anything moves, and everything goes to the Trash first.">
+<meta property="og:image" content="images/overview.jpg">
+<link rel="icon" href="images/icon.png">
+<style>
+  :root {
+    --bg: #f7f6fc; --bg-2: #ffffff; --card: #ffffff; --text: #15142a; --muted: #5f5d78; --faint: #8d8ba6;
+    --line: #e5e3f2; --accent: #5b4ff0; --accent-2: #8a5cf6; --accent-ink: #ffffff;
+    --safe: #148f50; --check: #c76a07; --keep: #5b4ff0; --glow: rgba(91, 79, 240, .22);
+    --shadow: 0 30px 80px rgba(36, 24, 120, .16), 0 2px 6px rgba(36, 24, 120, .06);
+    --stage: radial-gradient(900px 480px at 50% 0%, rgba(122, 104, 255, .20), transparent 70%), linear-gradient(#f2f0ff, var(--bg));
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0a16; --bg-2: #11101f; --card: #161529; --text: #f2f1fb; --muted: #a9a7c4; --faint: #77759a;
+      --line: #26243f; --accent: #8b80ff; --accent-2: #b28cff; --accent-ink: #0b0a16;
+      --safe: #4fd391; --check: #ffb24d; --keep: #a49cff; --glow: rgba(139, 128, 255, .28);
+      --shadow: 0 30px 90px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .04);
+      --stage: radial-gradient(900px 520px at 50% 0%, rgba(110, 92, 255, .35), transparent 70%), linear-gradient(#141230, var(--bg));
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  h1, h2, h3 { letter-spacing: -0.022em; }
+  h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; margin: 0 0 14px; }
+  .sub { color: var(--muted); font-size: 19px; max-width: 680px; margin: 0 0 40px; }
+  .center { text-align: center; }
+  .center .sub { margin-left: auto; margin-right: auto; }
+
+  /* Navigation */
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+  nav .wrap { display: flex; align-items: center; gap: 24px; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); font-size: 18px; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 30px; height: 30px; }
+  nav .links { margin-left: auto; display: flex; gap: 24px; align-items: center; font-size: 15px; }
+  nav .links a.plain { color: var(--muted); }
+  nav .links a.plain:hover { color: var(--text); text-decoration: none; }
+
+  /* Buttons */
+  .button { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 13px 22px; border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; box-shadow: 0 8px 24px var(--glow); }
+  .button:hover { text-decoration: none; filter: brightness(1.07); }
+  .button.ghost { background: transparent; color: var(--text); box-shadow: none; border: 1px solid var(--line); }
+  .button.ghost:hover { border-color: var(--accent); }
+  .button.small { padding: 8px 16px; font-size: 15px; box-shadow: none; }
+  .button svg { width: 18px; height: 18px; }
+
+  /* Hero */
+  header.hero { background: var(--stage); padding: 84px 0 0; overflow: hidden; }
+  .hero .icon-big { width: 96px; height: 96px; margin: 0 auto 26px; display: block; filter: drop-shadow(0 16px 30px var(--glow)); }
+  .hero h1 { font-size: clamp(40px, 6.6vw, 76px); line-height: 1.02; margin: 0 auto 22px; max-width: 900px; }
+  .hero h1 .grad { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 700px; margin: 0 auto 32px; }
+  .hero .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .hero .fine { margin: 16px 0 0; font-size: 14px; color: var(--faint); }
+  .trust { display: flex; gap: 10px 28px; justify-content: center; flex-wrap: wrap; margin: 34px 0 0; padding: 0; list-style: none; font-size: 15px; color: var(--muted); }
+  .trust li { display: flex; align-items: center; gap: 8px; }
+  .trust svg { width: 18px; height: 18px; color: var(--safe); flex: none; }
+  .stage { position: relative; margin: 56px auto 0; max-width: 1080px; }
+  .stage::before { content: ""; position: absolute; inset: 8% 6% auto; height: 70%; background: radial-gradient(closest-side, var(--glow), transparent); filter: blur(30px); z-index: 0; }
+  .window { position: relative; z-index: 1; border-radius: 14px 14px 0 0; overflow: hidden; border: 1px solid var(--line); border-bottom: 0; box-shadow: var(--shadow); background: var(--card); }
+  .window img { display: block; width: 100%; height: auto; }
+
+  /* Sections */
+  section { padding: 96px 0; }
+  section.alt { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  /* What fills a Mac */
+  .hogs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .hog { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .hog .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .hog h3 { font-size: 18px; margin: 0; }
+  .hog code { font: 13px/1.45 ui-monospace, "SF Mono", Menlo, monospace; color: var(--faint); word-break: break-all; }
+  .hog p { margin: 4px 0 0; color: var(--muted); font-size: 15.5px; }
+  .badge { font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 99px; white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; }
+  .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .badge.safe { color: var(--safe); background: color-mix(in srgb, var(--safe) 14%, transparent); }
+  .badge.check { color: var(--check); background: color-mix(in srgb, var(--check) 14%, transparent); }
+  .badge.keep { color: var(--keep); background: color-mix(in srgb, var(--keep) 14%, transparent); }
+
+  /* Feature rows */
+  .row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
+  .row + .row { margin-top: 110px; }
+  .row.flip { grid-template-columns: 1.4fr 1fr; }
+  .row.flip .text { order: 2; }
+  .row .shot { border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); display: block; width: 100%; height: auto; }
+  ul.ticks { list-style: none; padding: 0; margin: 22px 0 0; }
+  ul.ticks li { padding-left: 30px; position: relative; margin: 10px 0; color: var(--muted); }
+  ul.ticks li strong { color: var(--text); font-weight: 600; }
+  ul.ticks li::before { content: ""; position: absolute; left: 0; top: 5px; width: 18px; height: 18px; border-radius: 50%;
+    background: color-mix(in srgb, var(--safe) 16%, transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%2322a866' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; }
+  .legend { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 0; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; position: relative; }
+  .step .num { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; font-size: 15px;
+    color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); margin-bottom: 14px; }
+  .step h3 { margin: 0 0 6px; font-size: 19px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* Tools */
+  .tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 980px) { .tools { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .tools { grid-template-columns: 1fr; } }
+  .tool { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .tool .head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .tool .ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; flex: none;
+    color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); }
+  .tool .ic svg { width: 22px; height: 22px; }
+  .tool h3 { margin: 0; font-size: 17.5px; flex: 1; }
+  .tool p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .tag { font-size: 11.5px; font-weight: 800; letter-spacing: .06em; padding: 3px 8px; border-radius: 6px; }
+  .tag.free { color: var(--safe); background: color-mix(in srgb, var(--safe) 14%, transparent); }
+  .tag.pro { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+
+  /* Promise panel */
+  .promise { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+  .promise > *, .row > *, .steps > *, .tools > *, .hogs > * { min-width: 0; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; box-shadow: var(--shadow); }
+  .panel h3 { margin: 0 0 4px; font-size: 18px; }
+  .panel .meta { color: var(--faint); font-size: 14px; margin-bottom: 18px; }
+  .receipt-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+  .receipt-row .what { flex: 1; min-width: 0; }
+  .receipt-row .what small { display: block; color: var(--faint); font: 12.5px ui-monospace, "SF Mono", Menlo, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .receipt-row .size { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .panel .actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .pill { font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--text); }
+  .pill.primary { border-color: transparent; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
+  /* Pricing */
+  .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto; text-align: left; }
+  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+  .plan.pro { border: 1.5px solid color-mix(in srgb, var(--accent) 70%, transparent); box-shadow: 0 20px 60px var(--glow); }
+  .plan h3 { margin: 0; font-size: 20px; }
+  .plan .price { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; margin: 10px 0 0; }
+  .plan .per { color: var(--muted); margin-bottom: 8px; }
+  .plan .button { margin-top: 18px; }
+
+  /* FAQ */
+  .faq { max-width: 820px; margin: 0 auto; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--faint); font-weight: 400; font-size: 22px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin: 12px 0 0; }
+
+  /* Closing call to action and footer */
+  .closing { text-align: center; background: var(--stage); }
+  .closing h2 { max-width: 760px; margin: 0 auto 14px; }
+  footer { padding: 40px 0 56px; color: var(--faint); font-size: 15px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  footer a { color: var(--muted); }
+  footer .right { margin-left: auto; }
+
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .row, .row.flip, .promise { grid-template-columns: 1fr; gap: 32px; }
+    .row.flip .text { order: 0; }
+    .row + .row { margin-top: 72px; }
+  }
+  @media (max-width: 640px) {
+    nav .links a.plain { display: none; }
+    section { padding: 68px 0; }
+    header.hero { padding-top: 56px; }
+    .steps { grid-template-columns: 1fr; }
+    .trust { flex-direction: column; align-items: center; }
+    footer .right { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/icon.png" alt="">SwapMac</a>
+    <div class="links">
+      <a class="plain" href="#explained">Features</a>
+      <a class="plain" href="#safety">Safety</a>
+      <a class="plain" href="#pricing">Pricing</a>
+      <a class="plain" href="#faq">FAQ</a>
+      <a class="button small download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero center" id="top">
+  <div class="wrap">
+    <img class="icon-big" src="images/icon.png" alt="SwapMac app icon">
+    <h1>Know what's filling your Mac <span class="grad">before you delete anything.</span></h1>
+    <p class="lead">SwapMac scans your Mac and explains every folder in plain English: what it is, which app owns it, and whether it's safe to clear. You decide what goes, and it all goes to the Trash first.</p>
+    <div class="ctas">
+      <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
+        Download free</a>
+      <a class="button ghost buy" href="#pricing">Get Pro · $19.99 once</a>
+    </div>
+    <p class="fine">Every Pro feature free for 14 days, no card needed. macOS 14 Sonoma or later · Apple silicon and Intel</p>
+    <ul class="trust">
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>Scans never leave your Mac</li>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h12M8 6V4h4v2M5.5 6l.8 10h7.4l.8-10"/></svg>Everything goes to the Trash first</li>
+      <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Pay once, no subscription</li>
+    </ul>
+    <div class="stage">
+      <div class="window"><img src="images/overview.jpg" alt="SwapMac's Overview: disk use, what can be cleared safely, and where the space goes by category" width="1600" height="1025"></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Where the space goes</p>
+    <h2>The big numbers hide in folders Finder never shows.</h2>
+    <p class="sub">Storage settings call it "System Data" and stop there. SwapMac names about 200 kinds of folders, and tells you which ones rebuild themselves and which ones are yours.</p>
+    <div class="hogs">
+      <div class="hog"><div class="top"><h3>Xcode build files</h3><span class="badge safe">Safe to clear</span></div>
+        <code>~/Library/Developer/Xcode/DerivedData</code>
+        <p>Intermediate build output. Xcode recreates it on the next build, which takes a little longer.</p></div>
+      <div class="hog"><div class="top"><h3>App caches</h3><span class="badge safe">Safe to clear</span></div>
+        <code>~/Library/Caches</code>
+        <p>Files apps keep so they load faster. Apps rebuild them as you use them.</p></div>
+      <div class="hog"><div class="top"><h3>iPhone and iPad backups</h3><span class="badge check">Check first</span></div>
+        <code>~/Library/Application Support/MobileSync</code>
+        <p>Often tens of gigabytes. Safe to remove only if the device is backed up to iCloud or a newer backup exists.</p></div>
+      <div class="hog"><div class="top"><h3>Docker disk image</h3><span class="badge check">Check first</span></div>
+        <code>…/com.docker.docker/Data/vms/0/data/Docker.raw</code>
+        <p>Holds every image and container. It doesn't shrink when you delete them, so prune inside Docker.</p></div>
+      <div class="hog"><div class="top"><h3>Local AI models</h3><span class="badge check">Check first</span></div>
+        <code>~/.ollama/models · LM Studio · Hugging Face</code>
+        <p>Several gigabytes each, and they download again when needed. Keep the ones you still use.</p></div>
+      <div class="hog"><div class="top"><h3>Leftovers from removed apps</h3><span class="badge check">Check first</span></div>
+        <code>~/Library/Application Support/…</code>
+        <p>Support files that stay behind after an app goes to the Trash. SwapMac says why it thinks the app is gone.</p></div>
+      <div class="hog"><div class="top"><h3>Photos and Music libraries</h3><span class="badge keep">Keep</span></div>
+        <code>~/Pictures/Photos Library.photoslibrary</code>
+        <p>Your own data. SwapMac shows how big it is and never offers to clear it.</p></div>
+      <div class="hog"><div class="top"><h3>Mail and Messages</h3><span class="badge keep">Keep</span></div>
+        <code>~/Library/Mail · ~/Library/Messages</code>
+        <p>Protected by a built-in never-delete list, whatever a rule or a click says.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="explained">
+  <div class="wrap">
+    <div class="row">
+      <div class="text">
+        <p class="eyebrow">Explained</p>
+        <h2>Every folder, in a sentence you can trust.</h2>
+        <p class="sub">Click anything to see what it is, which app it belongs to, and what happens if you clear it.</p>
+        <div class="legend"><span class="badge safe">Safe to clear</span><span class="badge check">Check first</span><span class="badge keep">Keep</span></div>
+        <ul class="ticks">
+          <li><strong>Safe to clear</strong> means the app rebuilds it on its own</li>
+          <li><strong>Check first</strong> means it could matter to you, so it's never ticked for you</li>
+          <li><strong>Keep</strong> means it's yours or macOS needs it</li>
+        </ul>
+      </div>
+      <img class="shot" src="images/explained.jpg" alt="The Explained list: backups, caches, Docker and more, each with a safety badge" width="1600" height="1025" loading="lazy">
+    </div>
+    <div class="row flip">
+      <div class="text">
+        <p class="eyebrow">Map</p>
+        <h2>See your disk at a glance.</h2>
+        <p class="sub">Layers, tiles or a plain list. Every block has a name and a size, and the biggest problems are the biggest shapes.</p>
+        <ul class="ticks">
+          <li>Double-click to go in, Esc to go back up</li>
+          <li>Colored by safety, with the legend always on screen</li>
+          <li>The list view shows the same details for the smallest items</li>
+        </ul>
+      </div>
+      <img class="shot" src="images/map.jpg" alt="The Layers map: folders as labelled blocks, colored by safety" width="1600" height="1025" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="safety">
+  <div class="wrap center">
+    <p class="eyebrow">How cleaning works</p>
+    <h2>Show, explain, confirm, undo.</h2>
+    <p class="sub">There's no button that deletes things you haven't seen. Before anything moves, you know what will change, why, and how to get it back.</p>
+    <div class="steps" style="text-align:left">
+      <div class="step"><div class="num">1</div><h3>Scan</h3><p>A read-only scan of your Mac or one folder. Nothing changes while it runs.</p></div>
+      <div class="step"><div class="num">2</div><h3>Understand</h3><p>Each item says what it is, who owns it, and what happens if you clear it.</p></div>
+      <div class="step"><div class="num">3</div><h3>Review</h3><p>Only safe items start ticked. Items an open app is using are left out.</p></div>
+      <div class="step"><div class="num">4</div><h3>Undo</h3><p>Everything moves to the Trash. Cleanup History puts it back until you empty the Trash.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap promise">
+    <div>
+      <p class="eyebrow">Built to be the careful one</p>
+      <h2>Cleaning a Mac shouldn't feel risky.</h2>
+      <ul class="ticks">
+        <li><strong>A never-delete list</strong> protects macOS, your main folders, mail, messages, passwords, iCloud Drive and Photos</li>
+        <li><strong>Nothing runs behind your back.</strong> No automatic cleaning, no background daemons, no scary pop-ups</li>
+        <li><strong>Honest results.</strong> If something is skipped or needs permission, SwapMac says so and why</li>
+        <li><strong>Private by design.</strong> Scans stay on your Mac. No account, no analytics, no ads</li>
+      </ul>
+    </div>
+    <div class="panel" aria-label="Example of a cleanup summary">
+      <h3>Moved 4 items to the Trash</h3>
+      <div class="meta">Example · 9.6 GB · Put Back works until you empty the Trash</div>
+      <div class="receipt-row"><div class="what">Xcode build files<small>~/Library/Developer/Xcode/DerivedData</small></div><span class="size">6.2 GB</span><span class="badge safe">Moved</span></div>
+      <div class="receipt-row"><div class="what">Spotify cache<small>~/Library/Caches/com.spotify.client</small></div><span class="size">2.1 GB</span><span class="badge safe">Moved</span></div>
+      <div class="receipt-row"><div class="what">npm cache<small>~/.npm/_cacache</small></div><span class="size">1.3 GB</span><span class="badge safe">Moved</span></div>
+      <div class="receipt-row"><div class="what">Slack cache<small>Skipped: Slack is open</small></div><span class="size">0.4 GB</span><span class="badge check">Skipped</span></div>
+      <div class="actions"><span class="pill primary">Put All Back</span><span class="pill">Show in History</span><span class="pill">Done</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Everything in the app</p>
+    <h2>One app for your disk and your Mac.</h2>
+    <p class="sub">Free and Pro are marked up front, so nothing surprises you after a scan.</p>
+    <div class="tools">
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></span><h3>Scan and explain</h3><span class="tag free">FREE</span></div><p>Your whole Mac or any folder, with a plain-English note for everything SwapMac recognises.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 12h9M12.5 3.5v17M12.5 8h8"/></svg></span><h3>Storage map</h3><span class="tag free">FREE</span></div><p>Layers, tiles and a list, colored by safety.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v12.5H7z"/><path d="M14 3.5V8h4.5M10 13h5M10 16.5h3"/></svg></span><h3>Large old files</h3><span class="tag free">FREE</span></div><p>Big files you haven't opened in months, by size, age and type.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3.5l2.5-6 4 11 2.5-5H21"/></svg></span><h3>Monitor</h3><span class="tag free">FREE</span></div><p>Live CPU, memory, network and battery, with notes on what common processes do.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.8 9l5.7.2-4.5 3.5 1.6 5.5L12 15l-4.6 3.2L9 12.7 4.5 9.2l5.7-.2z"/></svg></span><h3>Safe cleanup</h3><span class="tag pro">PRO</span></div><p>Review every cache and build file that rebuilds itself, then move them to the Trash together.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m9 9 6 6M15 9l-6 6"/></svg></span><h3>Uninstaller</h3><span class="tag pro">PRO</span></div><p>Remove an app with the caches, settings and support files it leaves behind.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="3"/><path d="M7.5 12h.01M11 12h5.5"/></svg></span><h3>Quick Search</h3><span class="tag pro">PRO</span></div><p>Press ⌥⇧Space in any app to find a file and see its size and what it is.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="4" rx="1.5"/><path d="M7 12h10M9 16h6"/></svg></span><h3>Menu bar stats</h3><span class="tag pro">PRO</span></div><p>Free space, CPU, memory and what's safe to clear, one click away.</p></div>
+      <div class="tool"><div class="head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8M7.8 6.6a7 7 0 1 0 8.4 0"/></svg></span><h3>Startup items</h3><span class="tag free">FREE</span></div><p>Background helpers that start with your Mac, with the broken ones flagged.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="pricing">
+  <div class="wrap center">
+    <p class="eyebrow">Pricing</p>
+    <h2>Pay once. Keep it.</h2>
+    <p class="sub">Try every Pro feature free for 14 days. Afterwards, keep the free version, or buy Pro once. When a trial ends, nothing is deleted and your history stays.</p>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <div class="per">forever</div>
+        <ul class="ticks">
+          <li>Scan your whole Mac or any folder</li>
+          <li>Explanations and safety badges</li>
+          <li>Storage map, Large Files and the Monitor</li>
+          <li>Move items to the Trash one at a time</li>
+        </ul>
+        <a class="button ghost download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
+      </div>
+      <div class="plan pro">
+        <h3>SwapMac Pro</h3>
+        <div class="price">$19.99</div>
+        <div class="per">one-time payment · no subscription</div>
+        <ul class="ticks">
+          <li>Everything in Free</li>
+          <li>Safe cleanup in one go</li>
+          <li>Uninstaller with leftovers</li>
+          <li>Quick Search, menu bar stats and themes</li>
+        </ul>
+        <a class="button buy" href="#pricing">Buy Pro</a>
+      </div>
+    </div>
+    <p class="fine" style="color:var(--faint);font-size:14px;margin-top:20px">Your license key arrives by email. Payments are handled by Dodo Payments.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <h2 class="center">Questions</h2>
+    <details><summary>What is "System Data" on a Mac?</summary>
+      <p>Everything macOS doesn't file under apps, documents or photos: caches, logs, app support files, local Time Machine snapshots, iPhone backups, developer tools and leftovers from removed apps. Some of it rebuilds itself and is safe to clear; some of it is yours. SwapMac tells you which is which.</p></details>
+    <details><summary>Can SwapMac delete something important?</summary>
+      <p>It moves things to the Trash instead of deleting them, and Cleanup History can put them back until you empty the Trash. A never-delete list stops it touching macOS itself, your main folders, mail, messages, passwords, iCloud Drive and Photos libraries, whatever a rule or a click says.</p></details>
+    <details><summary>Why does SwapMac ask for Full Disk Access?</summary>
+      <p>macOS hides some folders, such as Mail, Messages, Safari and many apps' data, until an app has Full Disk Access. Without it, SwapMac still works, but those folders aren't measured and System Data looks smaller than it is. SwapMac only reads folders to measure them, and nothing it reads leaves your Mac.</p></details>
+    <details><summary>macOS says it can't check SwapMac. What do I do?</summary>
+      <p>SwapMac isn't notarized by Apple yet. The first time you open it, go to System Settings → Privacy &amp; Security and click Open Anyway. You only need to do this once; updates install without it.</p></details>
+    <details><summary>How do updates work?</summary>
+      <p>SwapMac checks once a day. When there's a new version it shows what's new and asks; nothing downloads until you click Install Update. You can turn the daily check off in Settings → Updates.</p></details>
+    <details><summary>What does SwapMac send over the internet?</summary>
+      <p>An update check about once a day and, if you have Pro, a license check about once a week. Never file names, scan results or usage.</p></details>
+    <details><summary>I bought Pro. Where's my license key?</summary>
+      <p>In the receipt email from Dodo Payments. In SwapMac, open Settings → SwapMac Pro → Enter License Key. If you can't find it, write to <a href="mailto:content@triignite.com">content@triignite.com</a>.</p></details>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>See what's really on your Mac.</h2>
+    <p class="sub">Scan it, read what everything is, and clear only what you choose.</p>
+    <div class="ctas" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
+      <a class="button ghost buy" href="#pricing">Get Pro · $19.99 once</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SwapMac</span>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:content@triignite.com">Contact</a>
+    <a href="mailto:content@triignite.com?subject=SwapMac%20beta&body=I%27d%20like%20to%20help%20test%20SwapMac.%20My%20Mac%3A%20">Join the beta</a>
+    <span class="right">Made for macOS.</span>
+  </div>
+</footer>
+
+<script>
+  // The Dodo Payments product for SwapMac Pro ("pdt_…"). Until it's set, Buy Pro points to the download.
+  const DODO_PRODUCT_ID = "pdt_0NqvT3eCpPuE8OEOzvIyv";
+  for (const link of document.querySelectorAll("a.buy")) {
+    link.href = DODO_PRODUCT_ID
+      ? "https://checkout.dodopayments.com/buy/" + DODO_PRODUCT_ID + "?quantity=1"
+      : document.querySelector("a.download").href;
+    if (!DODO_PRODUCT_ID) link.textContent = "Download and try Pro free";
+  }
+</script>
+</body>
+</html>
