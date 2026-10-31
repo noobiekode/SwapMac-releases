@@ -3,6 +3,26 @@
     <channel>
         <title>SwapMac</title>
         <item>
+            <title>0.3.3</title>
+            <pubDate>Sun, 01 Nov 2026 01:11:55 +0530</pubDate>
+            <sparkle:version>7</sparkle:version>
+            <sparkle:shortVersionString>0.3.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's new in SwapMac 0.3.3</h3>
+<ul>
+<li><b>About SwapMac</b> now says who makes it: SwapMac is crafted by <a href="https://www.triignite.com/">Triignite</a>.</li>
+</ul>
+]]></description>
+            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.3.dmg" length="8081003" type="application/octet-stream" sparkle:edSignature="BtCUxZ3zgTOelT3R7Ur+r3t0qtwmCbXr1DbCjBELezDkXMKynzwAAWKdGhRDtlZxNMCZ5v0hrvQ1dx7NgXfTDA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-6.delta" sparkle:deltaFrom="6" length="652126" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="SbCdAMF5MS4thd0tfnxKLGvf+P7JoddniylMofk+hVX5i8aYrzg4q906/PmPubvweAp4kPGZYFy7XGkQ8USgDg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-5.delta" sparkle:deltaFrom="5" length="717722" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HuY+TjH+oNr2UCJdlnJxXBbasxUp15ycrpElVHnZG+gZ1EUt5M09IKgHw+86RHYyKmnvQEiA4Pdiclt/huELCQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-4.delta" sparkle:deltaFrom="4" length="821626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="40El+BRhbbBo9BssX7e8omvmC+0WQYAE+02nv73hnsm5V8bZhRw23d2YG7/k6rCQPc3RdBp4VKiXDSLX2WnCBw=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-3.delta" sparkle:deltaFrom="3" length="1357654" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="pmghFKAB9Zt3LyT+KBTd7GQgEiVS1GvgO8VJhtYI8O7a30JjiA16gUqIY6miUi/ocT9CW9yJe5ZoXO45ZH1sBw=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac7-2.delta" sparkle:deltaFrom="2" length="1557394" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="jFiRmXluvAxzeyWUMiz1bJM4uPbMWDKoUY7G4sTYJDvb2I8k9ru+vK5fpGyVK7AjhJWiHR7tPDqZgY1WlAbpCw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.3.2</title>
             <pubDate>Sun, 01 Nov 2026 00:42:15 +0530</pubDate>
             <sparkle:version>6</sparkle:version>
@@ -41,29 +61,6 @@
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-3.delta" sparkle:deltaFrom="3" length="1293706" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="q6fZLDY9ePBZXjP+ktSLhssSIQEQOld0WN3jT8hXDgzwoTYaMyilBiMT//6FPc6+Uiu6r0Gg8ZTR9uol0zWlBQ=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-2.delta" sparkle:deltaFrom="2" length="1488358" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="WF+zR7sfQqBI4LA4eVUHFX3og4f2rhHUB5Tfhb1Z6s6mIx8+mGcn5+tkNUCUmrUIhLmQt+EWSk8y5FGrtkYwDg=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-1.delta" sparkle:deltaFrom="1" length="2286898" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="OAulvhKN+PGjhw82sgvgAyXFlPhs9RU29gCzH3HmcNUfkbLLq+kLQLa9TuBlt9b7lTkB3EvnziLsTGyX9OdLBQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.3.0</title>
-            <pubDate>Sat, 31 Oct 2026 21:39:41 +0530</pubDate>
-            <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h3>What's new in SwapMac 0.3.0</h3>
-<ul>
-<li><b>Developer:</b> a new screen for the space developer tools fill. Build folders in old projects (node_modules, virtual environments, target, Pods), Xcode simulators and runtimes, Docker, local AI models from Ollama, Hugging Face and LM Studio, and package caches. Projects with uncommitted work are never ticked for you, and source files are never touched.</li>
-<li><b>Each tool's own clean-up:</b> simulators go through Xcode, Docker prunes itself, package managers clean their own caches. Anything that can't go to the Trash tells you so first, and what downloads again.</li>
-<li><b>Any drive:</b> More Scans lists your external drives by name.</li>
-<li><b>Shared space:</b> SwapMac tells you when a file shares its space with a copy, so moving it won't free as much.</li>
-<li><b>Clearer map:</b> tiles that need a look first or should be kept carry a mark, not just a colour.</li>
-<li><b>VoiceOver</b> reads the cleanup review, summary and History more clearly.</li>
-</ul>
-]]></description>
-            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.0.dmg" length="8039811" type="application/octet-stream" sparkle:edSignature="nh9cFhcQbcRGR6tsU9qSlLqt7GPwya+F7FzIxwN2PlMynRd369CyuiCrinAwzcgLQVJ4JY+sePxIB5npLBLHBQ=="/>
-            <sparkle:deltas>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-3.delta" sparkle:deltaFrom="3" length="1252526" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="2/fVCZHbYdDwZJc9fmyQBG3gMxPq4/SgjkosvU6fAzijYFP5LtZlqhdVZsN2fY8S4kqOx7D3G+3DBhuDZideAQ=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-2.delta" sparkle:deltaFrom="2" length="1463486" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Ae5ItfXDtswHW2PKe3OlcJUtcHe0zxNzmXR20RGkLX8CHrDcRIGelfJxpgxj8LPB6vKxwcDB4GC9wwvcdGrvDQ=="/>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac4-1.delta" sparkle:deltaFrom="1" length="2281206" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Y5pxzOMmorfUJ6a1OvPfF3Ce83+vYRT1wssZo15lZliYsran3Xsj7FxXpy5XCn4X1LxM3rYSLmj0fKOyjmqhCQ=="/>
             </sparkle:deltas>
         </item>
     </channel>
