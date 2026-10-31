@@ -7,7 +7,7 @@
 <meta name="description" content="SwapMac scans your Mac, explains every folder in plain English, and clears only what you approve. Everything goes to the Trash first. Free to try, $19.99 once for Pro.">
 <meta property="og:title" content="SwapMac: know what's filling your Mac">
 <meta property="og:description" content="Every folder explained in plain English. You review before anything moves, and everything goes to the Trash first.">
-<meta property="og:image" content="images/overview.jpg">
+<meta property="og:image" content="images/dashboard.jpg">
 <link rel="icon" href="images/icon.png">
 <style>
   :root {
@@ -248,7 +248,10 @@
       <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Pay once, no subscription</li>
     </ul>
     <div class="stage">
-      <div class="window"><img src="images/overview.jpg" alt="SwapMac's Overview: disk use, what can be cleared safely, and where the space goes by category" width="1600" height="1025"></div>
+      <div class="window"><picture>
+        <source srcset="images/dashboard-dark.jpg" media="(prefers-color-scheme: dark)">
+        <img src="images/dashboard.jpg" alt="SwapMac's Dashboard: disk use by category, what's safe to clear, and live CPU, memory, battery and network" width="1600" height="1052">
+      </picture></div>
     </div>
   </div>
 </header>
@@ -350,7 +353,7 @@
           <li><strong>Keep</strong> means it's yours or macOS needs it</li>
         </ul>
       </div>
-      <img class="shot" src="images/explained.jpg" alt="The Explained list: backups, caches, Docker and more, each with a safety badge" width="1600" height="1025" loading="lazy">
+      <img class="shot" src="images/explained.jpg" alt="The Explained list: backups, caches, Docker and more, each with a safety badge" width="1600" height="1052" loading="lazy">
     </div>
     <div class="row flip">
       <div class="text">
@@ -363,7 +366,7 @@
           <li>The list view shows the same details for the smallest items</li>
         </ul>
       </div>
-      <img class="shot" src="images/map.jpg" alt="The Layers map: folders as labelled blocks, colored by safety" width="1600" height="1025" loading="lazy">
+      <img class="shot" src="images/map.jpg" alt="The Layers map: folders as labelled blocks, colored by safety" width="1600" height="1052" loading="lazy">
     </div>
   </div>
 </section>

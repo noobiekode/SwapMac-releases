@@ -3,6 +3,26 @@
     <channel>
         <title>SwapMac</title>
         <item>
+            <title>0.3.1</title>
+            <pubDate>Sun, 01 Nov 2026 00:12:38 +0530</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's new in SwapMac 0.3.1</h3>
+<ul>
+<li><b>How SwapMac decided:</b> the details panel and each row of the cleanup review now say why an item is marked the way it is. You see which rule matched, what it needs (such as the app being closed), whether the app it belongs to is still installed, and how safe it is to remove.</li>
+<li><b>Intel Macs:</b> the graphics memory note on the Dashboard now describes Intel's built-in graphics correctly, not only Apple silicon.</li>
+</ul>
+]]></description>
+            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.3.1.dmg" length="8043884" type="application/octet-stream" sparkle:edSignature="flIJuF/WE+KHETiEPMrSmres294+d6Q/REfVe/aMtfAXgqEAd2+EUJcYtPiEh1PaSJlOxR/Ph3550B7nDIVWCQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-4.delta" sparkle:deltaFrom="4" length="608758" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="B+Rmp/2lu5bM7y4U5IFQ+H2lL4zz+oPkfJl3dHaCiStSOsi5juhy5uEBXLcKAvdJeVvdjJlwuvtV3veV+JkaAg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-3.delta" sparkle:deltaFrom="3" length="1293706" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="q6fZLDY9ePBZXjP+ktSLhssSIQEQOld0WN3jT8hXDgzwoTYaMyilBiMT//6FPc6+Uiu6r0Gg8ZTR9uol0zWlBQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-2.delta" sparkle:deltaFrom="2" length="1488358" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="WF+zR7sfQqBI4LA4eVUHFX3og4f2rhHUB5Tfhb1Z6s6mIx8+mGcn5+tkNUCUmrUIhLmQt+EWSk8y5FGrtkYwDg=="/>
+                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac5-1.delta" sparkle:deltaFrom="1" length="2286898" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="OAulvhKN+PGjhw82sgvgAyXFlPhs9RU29gCzH3HmcNUfkbLLq+kLQLa9TuBlt9b7lTkB3EvnziLsTGyX9OdLBQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.3.0</title>
             <pubDate>Sat, 31 Oct 2026 21:39:41 +0530</pubDate>
             <sparkle:version>4</sparkle:version>
@@ -43,29 +63,6 @@
             <sparkle:deltas>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-2.delta" sparkle:deltaFrom="2" length="922406" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="poL+WZNwYP4ck3AaWS9q5hPzQuHRFeeOhcuQeaY1EdjpxLMC1oUDJ5S4I9cfUHjSyZBOndU/BLPpH3swcREaAg=="/>
                 <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac3-1.delta" sparkle:deltaFrom="1" length="1878538" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HRMMvORc3MFRGEFV6yDurGe7gBL44tn5q4FunxCx0DW3rXOYRY2q9QEr4dzxlXzbBInzCiAz0me6PCLU99ExAA=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.2.0</title>
-            <pubDate>Sat, 31 Oct 2026 20:02:24 +0530</pubDate>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h3>What's new in SwapMac 0.2.0</h3>
-<ul>
-<li><b>Dashboard:</b> a new first screen with your Mac's storage, memory, battery and what's safe to clear, at a glance.</li>
-<li><b>A clearer cleanup:</b> every item says what happens if you clear it, and afterwards a summary shows exactly what moved, what was skipped and why.</li>
-<li><b>Cleanup History:</b> grouped by cleanup, with the date each item leaves the Trash. Put Back never overwrites anything, and moving one item offers Undo.</li>
-<li><b>A truthful uninstaller:</b> finds an app's helpers, plug-ins and system files too, lets you keep any part, asks for your password once, and says honestly what's left.</li>
-<li><b>Calmer setup:</b> SwapMac explains before it asks for access, scans read-only, and shows which folders it couldn't read and why.</li>
-<li><b>Where the used space is:</b> what you can review, what macOS manages itself (snapshots, swap, the system) and what couldn't be read.</li>
-<li><b>Settings in tabs</b>, a Privacy tab listing exactly what SwapMac sends, clear Pro terms, and SwapMac → Uninstall SwapMac… to remove it completely.</li>
-</ul>
-<p>Nothing changes until you choose it, and everything still goes to the Trash first.</p>
-]]></description>
-            <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac-0.2.0.dmg" length="7304920" type="application/octet-stream" sparkle:edSignature="lpuJVN8Il+IWaAfEJgOTBIGxQScbtrQ8uMYnFwQ//72SA3ZDufnCHbhwJwXX0X9NzbTtJIWOD1TSPDoAhuMDDQ=="/>
-            <sparkle:deltas>
-                <enclosure url="https://raw.githubusercontent.com/noobiekode/SwapMac-releases/main/downloads/SwapMac2-1.delta" sparkle:deltaFrom="1" length="1746942" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="941872" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="e7IkzldhEVeRhU0tCH8ZqaqOBmzaPtZahK9G2pzfYUPzwolRIgy00gKG+bUiS/EL5rLcBMabC9P6qT2ysDgyDA=="/>
             </sparkle:deltas>
         </item>
     </channel>
