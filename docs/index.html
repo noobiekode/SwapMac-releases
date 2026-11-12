@@ -9,251 +9,328 @@
 <meta property="og:description" content="Every folder explained in plain English. You review before anything moves, and everything goes to the Trash first.">
 <meta property="og:image" content="images/dashboard.jpg">
 <link rel="icon" href="images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff; --panel: #f4f4f6; --raised: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --faint: #a1a1a6;
-    --line: #e4e4e9; --brand: #2b30b5; --brand-ink: #ffffff; --soft: rgba(120, 120, 128, .12);
-    --safe: #2fb58c; --check: #f0a43a; --keep: #b3b6cf; --plain: #d4d4da;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0c0c0f; --panel: #18181c; --raised: #222228; --text: #f5f5f7; --muted: #a1a1a8; --faint: #6e6e76;
-      --line: #2c2c33; --brand: #7c84ff; --brand-ink: #0c0c1c; --soft: rgba(120, 120, 128, .24);
-      --safe: #5adbb2; --check: #f4b04f; --keep: #8d91ad; --plain: #3a3a42;
-    }
+    --paper: #F3F1EC; --card: #FBFAF7; --ink: #121212; --ink-2: #1A1A1A;
+    --muted: rgba(18, 18, 18, .65); --faint: rgba(18, 18, 18, .48); --line: rgba(18, 18, 18, .12);
+    --brand: #3D4BE0; --ignite: #FF4D1F;
+    --safe: #2FA84F; --check: #E8962A; --keep: #8D91AD;
+    --on-ink: #F3F1EC; --on-ink-muted: rgba(243, 241, 236, .7); --on-ink-line: rgba(243, 241, 236, .14);
+    --display: "Inter Tight", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; overflow-x: clip; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--display); -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
   img { max-width: 100%; }
   button { font: inherit; color: inherit; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-  .narrow { max-width: 760px; }
-  h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif; }
-  h2 { font-size: clamp(32px, 4.4vw, 50px); font-weight: 700; line-height: 1.06; letter-spacing: -0.032em; margin: 0 0 14px; text-align: center; }
-  .intro { color: var(--muted); text-align: center; max-width: 560px; margin: 0 auto 48px; }
-  .hi { color: var(--brand); }
-  section { padding: 120px 0 0; }
-  .groups > *, .tools > *, .promises > *, .steps > *, .plans > * { min-width: 0; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 640px) { .wrap { padding: 0 24px; } }
 
-  /* Buttons */
-  .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
-    padding: 12px 20px; border-radius: 10px; background: var(--brand); color: var(--brand-ink); text-decoration: none; transition: filter .15s, background .15s; }
-  .button:hover { filter: brightness(1.1); }
-  .button.quiet { background: var(--soft); color: var(--text); }
-  .button.quiet:hover { filter: none; background: color-mix(in srgb, var(--soft), var(--text) 6%); }
-  .button.small { padding: 8px 14px; font-size: 14px; }
-  .button svg { width: 16px; height: 16px; }
-  .ctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  /* Type */
+  .display, h1, h2 { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.035em; line-height: .9; }
+  .serif { font-family: var(--serif); font-weight: 400; text-transform: none; letter-spacing: -0.02em; }
+  .serif.line { display: block; margin-top: .06em; }
+  .label { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
+  h2 { font-size: clamp(36px, 6vw, 72px); margin: 0 0 18px; overflow-wrap: break-word; }
+  h2 .serif { font-size: 1.05em; }
+  .kicker { font-family: var(--serif); font-size: clamp(19px, 2vw, 22px); color: var(--muted); margin: 0 0 12px; }
+  .intro { color: var(--muted); max-width: 600px; margin: 0 0 48px; font-size: 17px; }
+  .center { text-align: center; }
+  .center .intro { margin-left: auto; margin-right: auto; }
+  section { padding: 80px 0; }
+  @media (min-width: 1024px) { section { padding: 112px 0; } }
 
-  /* Hero panel, with the navigation inside it */
-  .hero { margin: 12px; background: var(--panel); border-radius: 28px; overflow: hidden; }
-  nav { display: flex; align-items: center; gap: 28px; height: 72px; padding: 0 28px; max-width: 1180px; margin: 0 auto; }
-  .brand { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 16px; text-decoration: none; letter-spacing: -0.01em; }
+  /* Pill buttons */
+  .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; border: 1px solid transparent;
+    font: 500 12px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; padding: 15px 22px; text-decoration: none;
+    background: var(--ink); color: var(--paper); transition: transform .15s, background .15s, border-color .15s; }
+  .button:hover { transform: translateY(-2px); background: var(--brand); }
+  .button.quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+  .button.quiet:hover { border-color: var(--ink); background: transparent; }
+  .button svg { width: 14px; height: 14px; }
+  .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .center .ctas, .hero .ctas { justify-content: center; }
+
+  /* Building blocks */
+  .framed { border: 6px solid var(--brand); border-radius: 22px; background: var(--card); overflow: hidden; }
+  .grid-lines { display: grid; grid-template-columns: 1fr; border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+  .grid-lines > * { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 24px; min-width: 0; transition: background .2s; }
+  .grid-lines > *:hover { background: var(--card); }
+  @media (min-width: 640px) { .grid-lines.cols-2, .grid-lines.cols-3, .grid-lines.cols-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .grid-lines.cols-3 { grid-template-columns: repeat(3, 1fr); } .grid-lines.cols-4 { grid-template-columns: repeat(4, 1fr); } }
+  .blueprint { background-image: linear-gradient(to right, rgba(18, 18, 18, .06) 1px, transparent 1px), linear-gradient(to bottom, rgba(18, 18, 18, .06) 1px, transparent 1px);
+    background-size: 72px 72px; background-position: center top; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; display: inline-block; background: var(--keep); }
+  .dot.safe { background: var(--safe); } .dot.check { background: var(--check); } .dot.keep { background: var(--keep); }
+  .tag { font: 500 10.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .tag.pro { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+  /* Floating pill navigation */
+  .nav { position: fixed; inset: 0 0 auto; z-index: 40; padding: 12px; pointer-events: none; }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 1280px; margin: 0 auto; }
+  .nav-row > * { pointer-events: auto; }
+  .pill { display: inline-flex; align-items: center; gap: 4px; background: #fff; border: 1px solid rgba(18, 18, 18, .1); border-radius: 999px; box-shadow: 0 1px 0 rgba(18, 18, 18, .06); }
+  .brand { padding: 8px 16px 8px 9px; gap: 9px; text-decoration: none; font: 800 14px/1 var(--display); letter-spacing: -0.01em; text-transform: uppercase; }
   .brand img { width: 26px; height: 26px; }
-  nav .links { margin-left: auto; display: flex; gap: 26px; font-size: 14px; }
-  nav .links a { text-decoration: none; color: var(--muted); }
-  nav .links a:hover { color: var(--text); }
-  .hero .top { text-align: center; padding: 64px 20px 0; }
-  .hero h1 { font-size: clamp(42px, 6.4vw, 72px); font-weight: 700; line-height: 1.02; letter-spacing: -0.04em; margin: 0 auto 22px; max-width: 860px; }
-  .hero .lead { color: var(--muted); font-size: 18px; max-width: 580px; margin: 0 auto 30px; }
-  .hero .lead b { color: var(--text); font-weight: 600; }
-  .hero .fine { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
-  .hero .fine a { color: var(--text); }
+  .links { padding: 5px; }
+  .links a { font: 400 12px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; text-decoration: none; padding: 9px 14px; border-radius: 999px; color: var(--muted); }
+  .links a:hover { color: var(--ink); background: rgba(18, 18, 18, .05); }
+  .nav .button.download { background: var(--brand); padding: 13px 20px; }
+  .nav .button.download:hover { background: var(--ink); }
+  .menu-button { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(18, 18, 18, .1); background: #fff; cursor: pointer; place-items: center; }
+  .menu-button svg { width: 18px; height: 18px; }
+  .menu { display: none; pointer-events: auto; margin: 8px auto 0; max-width: 1280px; background: #fff; border: 1px solid rgba(18, 18, 18, .1); border-radius: 24px; padding: 10px 22px 22px; }
+  .menu a:not(.button) { display: block; font: 800 30px/1 var(--display); text-transform: uppercase; letter-spacing: -0.03em; text-decoration: none; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .menu .button { margin-top: 18px; width: 100%; background: var(--brand); }
+  .nav.open .menu { display: block; }
+  @media (max-width: 860px) {
+    .links, .nav .nav-row > .button.download { display: none; }
+    .menu-button { display: grid; }
+  }
 
-  /* Screenshot switcher */
-  .tabs { display: inline-flex; gap: 2px; padding: 3px; margin: 52px auto 28px; border-radius: 11px; background: var(--soft); }
-  .tabs button { border: 0; background: none; padding: 7px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--muted); cursor: pointer; }
-  .tabs button[aria-selected="true"] { background: var(--raised); color: var(--text); box-shadow: 0 1px 3px rgba(0, 0, 0, .1); }
-  .shots { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
-  .shots img { display: block; width: 100%; height: auto; border-radius: 12px 12px 0 0; box-shadow: 0 0 0 1px rgba(0, 0, 0, .06), 0 24px 60px rgba(0, 0, 0, .12); }
+  /* Hero */
+  .hero { position: relative; isolation: isolate; padding: 132px 0 88px; text-align: center; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 75%); }
+  .hero::before { background-image: linear-gradient(to right, rgba(18, 18, 18, .07) 1px, transparent 1px), linear-gradient(to bottom, rgba(18, 18, 18, .07) 1px, transparent 1px);
+    background-size: 72px 72px; background-position: center top; }
+  .hero .pill.made { padding: 8px 14px; margin-bottom: 30px; gap: 8px; }
+  .hero .pill.made .label { color: var(--ink); font-size: 11px; }
+  .hero .pill.made i { width: 7px; height: 7px; border-radius: 50%; background: var(--ignite); }
+  .hero h1 { font-size: clamp(44px, 8vw, 120px); margin: 0 auto; max-width: 1100px; overflow-wrap: break-word; }
+  .hero h1 .serif { font-size: 1.04em; color: var(--brand); }
+  .hero .sub { font-family: var(--serif); font-size: clamp(22px, 2.8vw, 32px); line-height: 1.2; color: rgba(18, 18, 18, .82); margin: 22px auto 18px; }
+  .hero .lead { color: var(--muted); max-width: 560px; margin: 0 auto 32px; font-size: 17px; }
+  .hero .lead b { color: var(--ink); font-weight: 600; }
+  .hero .fine { margin: 22px auto 0; max-width: 640px; line-height: 1.7; }
+  .hero .fine a { color: var(--ink); }
+  .stage { margin: 64px auto 0; max-width: 1080px; transform: rotate(-1deg); box-shadow: 0 30px 70px -30px rgba(18, 18, 18, .35); }
+  .stage-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line);
+    background-color: var(--card); }
+  .stage-bar .lights { display: flex; gap: 6px; }
+  .stage-bar .lights i { width: 10px; height: 10px; border-radius: 50%; background: rgba(18, 18, 18, .14); }
+  .tabs { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(18, 18, 18, .06); }
+  .tabs button { border: 0; background: none; padding: 8px 14px; border-radius: 999px; font: 500 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+  .stage-bar .label { min-width: 52px; text-align: right; }
+  .shots img { display: block; width: 100%; height: auto; }
   .shots [hidden] { display: none; }
+  @media (max-width: 520px) { .stage-bar .lights, .stage-bar .label { display: none; } .stage-bar { justify-content: center; } }
+
+  /* Ticker */
+  .ticker { overflow: hidden; background: var(--brand); color: #fff; border-block: 2px solid var(--ink); padding: 16px 0; }
+  .ticker-track { display: flex; width: max-content; animation: ticker 35s linear infinite; }
+  .ticker-track span { font: 800 clamp(28px, 4.4vw, 56px)/1 var(--display); text-transform: uppercase; letter-spacing: -0.03em; padding: 0 22px; white-space: nowrap; }
+  .ticker-track b { font-weight: 400; color: rgba(255, 255, 255, .7); margin-left: 44px; }
+  @keyframes ticker { to { transform: translateX(-50%); } }
 
   /* The storage bar */
-  .disk { background: var(--panel); border-radius: 20px; padding: 26px 28px 24px; }
-  .disk .head { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; margin-bottom: 14px; }
-  .disk .head b { font-weight: 600; }
-  .disk .head span { color: var(--muted); }
-  .bar { display: flex; height: 26px; border-radius: 7px; overflow: hidden; gap: 2px; background: var(--raised); }
-  .bar > i { display: block; flex: var(--gb) 0 0; background: var(--plain); }
+  .disk { padding: 26px 26px 22px; }
+  .disk .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .disk .head b { font: 800 22px/1 var(--display); text-transform: uppercase; letter-spacing: -0.02em; }
+  .bar { display: flex; height: 30px; border-radius: 8px; overflow: hidden; gap: 2px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+  .bar > i { display: block; flex: var(--gb) 0 0; background: #DAD7CF; }
   .bar .sys { display: flex; gap: 2px; position: relative; }
-  .bar .sys i { display: block; flex: var(--gb) 0 0; background: var(--plain); transition: background .5s ease; transition-delay: calc(var(--n) * 140ms); }
-  .bar .sys::after { content: "System Data"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 11.5px; font-weight: 600;
-    color: var(--muted); background: repeating-linear-gradient(-45deg, var(--plain) 0 6px, color-mix(in srgb, var(--plain), var(--text) 6%) 6px 12px);
-    transition: opacity .4s ease; }
-  .bar .free { background: transparent; }
+  .bar .sys i { display: block; flex: var(--gb) 0 0; background: #DAD7CF; transition: background .5s ease; transition-delay: calc(var(--n) * 140ms); }
+  .bar .sys::after { content: "SYSTEM DATA"; position: absolute; inset: 0; display: grid; place-items: center; font: 500 10.5px/1 var(--mono); letter-spacing: .06em;
+    color: var(--muted); background: repeating-linear-gradient(-45deg, #DAD7CF 0 6px, #CFCBC2 6px 12px); transition: opacity .4s ease; }
+  .bar .free { background: transparent !important; }
   .named .bar .sys::after { opacity: 0; }
   .named .bar .sys i.safe { background: var(--safe); }
   .named .bar .sys i.check { background: var(--check); }
   .named .bar .sys i.keep { background: var(--keep); }
-  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 13px; color: var(--muted); }
-  .legend li { display: flex; align-items: center; gap: 7px; opacity: .35; transition: opacity .4s; transition-delay: calc(var(--n) * 140ms); }
-  .legend li b { color: var(--text); font-weight: 500; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 18px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 7px; opacity: .3; transition: opacity .4s; transition-delay: calc(var(--n) * 140ms); }
+  .legend li b { color: var(--ink); font-weight: 600; }
   .named .legend li { opacity: 1; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--plain); }
-  .dot.safe { background: var(--safe); } .dot.check { background: var(--check); } .dot.keep { background: var(--keep); }
-  .disk .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-  .disk .foot button { border: 0; background: none; color: var(--brand); font-weight: 500; cursor: pointer; padding: 0; }
+  .disk .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  .disk .foot button { border: 1px solid var(--line); background: none; border-radius: 999px; padding: 8px 14px; font: 500 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; cursor: pointer; }
+  .disk .foot button:hover { border-color: var(--ink); }
 
-  /* Folders grouped by safety */
-  .groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
-  .group { background: var(--panel); border-radius: 20px; padding: 24px; }
-  .group h3 { display: flex; align-items: center; gap: 8px; font-size: 17px; margin: 0 0 2px; letter-spacing: -0.01em; }
-  .group > p { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
-  .rows { background: var(--raised); border-radius: 12px; overflow: hidden; }
-  .rows div { padding: 13px 16px; border-top: 1px solid var(--line); }
-  .rows div:first-child { border-top: 0; }
-  .rows b { display: block; font-weight: 500; font-size: 14.5px; }
-  .rows code { display: block; font: 11.5px/1.4 ui-monospace, "SF Mono", Menlo, monospace; color: var(--faint); margin: 2px 0 4px; word-break: break-all; }
-  .rows span { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+  /* Safe / Check / Keep */
+  .groups { margin-top: 56px; }
+  .groups > div { padding: 28px 24px 24px; }
+  .groups .label { display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .groups .note { color: var(--muted); font-size: 15px; margin: 8px 0 18px; }
+  .groups .item { padding: 14px 0; border-top: 1px solid var(--line); }
+  .groups .item b { display: block; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+  .groups .item code { display: block; font: 400 11.5px/1.45 var(--mono); color: var(--faint); margin: 3px 0 5px; word-break: break-all; }
+  .groups .item span { display: block; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
 
-  /* Everything in the app */
-  .tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .tool { background: var(--panel); border-radius: 18px; padding: 22px; }
-  .tool .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-  .tool svg { width: 24px; height: 24px; color: var(--text); }
-  .tag { font-size: 11px; font-weight: 600; letter-spacing: .04em; padding: 3px 8px; border-radius: 6px; background: var(--soft); color: var(--muted); }
-  .tag.pro { background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--brand); }
-  .tool h3 { margin: 0 0 4px; font-size: 16.5px; letter-spacing: -0.01em; }
-  .tool p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  /* Features */
+  .tool .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 40px; }
+  .tool .top svg { width: 20px; height: 20px; color: var(--faint); }
+  .tool .meta { display: flex; align-items: center; gap: 10px; }
+  .tool h3 { font: 800 22px/1 var(--display); text-transform: uppercase; letter-spacing: -0.03em; margin: 0 0 10px; }
+  .tool p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 
-  /* Safe by design */
-  .promises { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .promise { background: var(--panel); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; }
-  .promise > svg { width: 30px; height: 30px; color: var(--brand); margin-bottom: 22px; }
-  .promise h3 { font-size: 22px; letter-spacing: -0.02em; margin: 0 0 6px; }
-  .promise > p { color: var(--muted); font-size: 15px; margin: 0 0 22px; }
-  .promise .rows { margin-top: auto; }
-  .check-rows div { display: flex; align-items: center; gap: 10px; font-size: 14px; }
-  .check-rows svg { width: 16px; height: 16px; color: var(--muted); flex: none; }
-  .receipt div { display: flex; align-items: center; gap: 12px; font-size: 14px; }
-  .receipt .what { flex: 1; min-width: 0; }
-  .receipt .what small { display: block; color: var(--faint); font: 11.5px ui-monospace, "SF Mono", Menlo, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .receipt .size { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .receipt .state { display: flex; align-items: center; gap: 6px; width: 72px; color: var(--muted); font-size: 13px; }
-  .receipt .total { justify-content: space-between; font-weight: 500; }
-  .receipt .total button { border: 0; border-radius: 7px; padding: 5px 10px; background: var(--brand); color: var(--brand-ink); font-size: 12.5px; font-weight: 500; }
-  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
-  .steps div { background: var(--panel); border-radius: 18px; padding: 20px 22px; }
-  .steps b { display: block; font-size: 15.5px; font-weight: 600; margin-bottom: 4px; }
-  .steps b em { font-style: normal; color: var(--faint); font-weight: 500; margin-right: 8px; font-variant-numeric: tabular-nums; }
-  .steps p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  /* Careful by design: the ink section */
+  .ink { background: var(--ink); color: var(--on-ink); border-radius: 40px; margin: 0 8px; }
+  @media (min-width: 640px) { .ink { margin: 0 12px; } }
+  .ink .kicker, .ink .intro { color: var(--on-ink-muted); }
+  .ink .label { color: rgba(243, 241, 236, .55); }
+  .promises { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 900px) { .promises { grid-template-columns: 1fr 1fr; } }
+  .promise { background: var(--ink-2); border: 1px solid var(--on-ink-line); border-radius: 26px; padding: 30px; display: flex; flex-direction: column; min-width: 0; }
+  .promise h3 { font: 800 clamp(26px, 3vw, 34px)/.95 var(--display); text-transform: uppercase; letter-spacing: -0.03em; margin: 14px 0 12px; }
+  .promise > p { color: var(--on-ink-muted); margin: 0 0 24px; }
+  .receipt { margin-top: auto; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 18px 18px 14px; font: 400 12.5px/1.5 var(--mono); }
+  .receipt .row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed rgba(18, 18, 18, .2); }
+  .receipt .row:first-child { padding-top: 0; }
+  .receipt .what { flex: 1; min-width: 0; text-transform: uppercase; letter-spacing: .02em; }
+  .receipt .what small { display: block; color: var(--faint); text-transform: none; letter-spacing: 0; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .receipt .state { display: flex; align-items: center; gap: 6px; width: 84px; text-transform: uppercase; font-size: 11px; }
+  .receipt .total { border-bottom: 0; justify-content: space-between; font-weight: 500; text-transform: uppercase; padding-bottom: 0; }
+  .receipt .total button { border: 0; border-radius: 999px; padding: 8px 12px; background: var(--ink); color: var(--paper); font: 500 10.5px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+  .receipt .total button { white-space: nowrap; }
+  @media (max-width: 520px) {
+    .receipt .row:not(.total) { flex-wrap: wrap; row-gap: 4px; }
+    .receipt .row:not(.total) .what { flex-basis: 100%; }
+    .receipt .state { width: auto; margin-left: auto; }
+  }
+  .checks { margin-top: auto; border-top: 1px solid var(--on-ink-line); }
+  .checks div { display: flex; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--on-ink-line); font-size: 15px; }
+  .checks svg { width: 18px; height: 18px; color: var(--on-ink-muted); flex: none; }
+  .ink .grid-lines { margin-top: 56px; border-color: var(--on-ink-line); }
+  .ink .grid-lines > * { border-color: var(--on-ink-line); }
+  .ink .grid-lines > *:hover { background: var(--ink-2); }
+  .step-n { display: block; font: 800 64px/.9 var(--display); letter-spacing: -0.04em; margin: 18px 0 14px; }
+  .steps h3 { font: 800 22px/1 var(--display); text-transform: uppercase; letter-spacing: -0.03em; margin: 0 0 8px; }
+  .steps p { margin: 0; font-family: var(--serif); font-size: 19px; line-height: 1.3; color: var(--on-ink-muted); }
 
   /* Pricing */
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 860px; margin: 0 auto; }
-  .plan { background: var(--panel); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; }
-  .plan.pro { box-shadow: inset 0 0 0 2px var(--brand); }
-  .plan h3 { font-size: 17px; margin: 0; display: flex; justify-content: space-between; align-items: center; }
-  .price { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; font-size: 56px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin: 22px 0 6px; }
-  .price sup { font-size: 24px; vertical-align: 24px; margin-right: 2px; letter-spacing: 0; }
-  .per { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
-  .plan .rows { margin-bottom: 22px; flex: 1; }
-  .plan .rows div { display: flex; gap: 10px; align-items: center; font-size: 14px; }
-  .plan .rows svg { width: 16px; height: 16px; color: var(--safe); flex: none; }
-  .small-print { color: var(--muted); font-size: 13px; text-align: center; max-width: 620px; margin: 22px auto 0; }
+  .plans { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 920px; margin: 0 auto; text-align: left; }
+  @media (min-width: 760px) { .plans { grid-template-columns: 1fr 1fr; align-items: stretch; } }
+  .plan { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; min-width: 0; }
+  .plan.pro { border: 6px solid var(--brand); padding: 25px; }
+  .plan .name { font: 800 24px/1 var(--display); text-transform: uppercase; letter-spacing: -0.02em; margin: 10px 0 0; }
+  .price { font: 800 72px/.9 var(--display); letter-spacing: -0.045em; margin: 26px 0 8px; }
+  .price sup { font-size: .4em; vertical-align: .95em; margin-right: 2px; letter-spacing: 0; }
+  .per { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+  .plan ul { list-style: none; padding: 0; margin: 0 0 26px; flex: 1; border-top: 1px solid var(--line); }
+  .plan li { display: flex; gap: 12px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .plan li svg { width: 16px; height: 16px; color: var(--safe); flex: none; }
+  .plan .button { align-self: flex-start; }
+  .badge { position: absolute; top: -48px; right: -26px; width: 112px; height: 112px; border-radius: 50%; background: var(--ignite); color: var(--ink);
+    display: grid; place-items: center; box-shadow: 0 6px 0 var(--ink); font-size: 22px; }
+  .badge svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 18s linear infinite; }
+  .badge text { font: 500 8.6px var(--mono); letter-spacing: 1.5px; fill: var(--ink); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 760px) { .badge { width: 92px; height: 92px; top: -40px; right: -6px; } }
+  .small-print { color: var(--muted); font-size: 14px; max-width: 640px; margin: 28px auto 0; }
 
   /* First launch */
-  .launch { background: var(--panel); border-radius: 26px; padding: clamp(28px, 5vw, 56px); }
-  .launch h2 { text-align: left; font-size: clamp(28px, 3.4vw, 38px); }
-  .launch .intro { text-align: left; margin: 0 0 36px; max-width: 640px; }
-  .launch-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .launch-steps > div { background: var(--raised); border-radius: 16px; padding: 22px; min-width: 0; }
-  .launch-steps .n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); font-size: 13px; font-weight: 600; margin-bottom: 14px; }
-  .launch-steps h3 { margin: 0 0 6px; font-size: 16px; }
-  .launch-steps p { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-  .mock { border-radius: 10px; background: var(--panel); padding: 14px; font-size: 12.5px; line-height: 1.45; }
+  .launch-steps { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 640px) { .launch-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .launch-steps { grid-template-columns: repeat(3, 1fr); } }
+  .launch-steps > div { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; min-width: 0; display: flex; flex-direction: column; }
+  .launch-steps h3 { font: 800 clamp(24px, 2.4vw, 28px)/.95 var(--display); text-transform: uppercase; letter-spacing: -0.03em; margin: 18px 0 12px; }
+  .launch-steps p { margin: 0 0 22px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+  .mock { margin-top: auto; border-radius: 12px; background: #fff; padding: 16px; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; font-size: 13px; line-height: 1.45;
+    box-shadow: 0 1px 2px rgba(18, 18, 18, .06), 0 14px 34px -10px rgba(18, 18, 18, .22); }
   .mock .warn { width: 28px; height: 28px; margin-bottom: 6px; color: #e0a100; }
   .mock strong { display: block; margin-bottom: 3px; font-weight: 600; }
   .mock .muted { color: var(--muted); }
-  .mock .btn { display: block; text-align: center; margin-top: 10px; padding: 5px 10px; border-radius: 6px; font-weight: 500; background: #2f6df6; color: #fff; }
-  .mock .btn.light { display: inline-block; background: var(--raised); color: var(--text); box-shadow: 0 0 0 1px var(--line); margin-top: 8px; }
-  .mock .crumb { color: var(--faint); font-size: 11.5px; margin-bottom: 8px; }
-  .mock .ring { outline: 2px solid var(--check); outline-offset: 3px; }
-  .mock .pw { margin-top: 6px; padding: 5px 10px; border-radius: 6px; box-shadow: 0 0 0 1px var(--line); background: var(--raised); letter-spacing: 3px; color: var(--muted); }
-  .launch-note { margin-top: 24px; color: var(--muted); font-size: 14px; max-width: 720px; }
-  .launch-note details { margin-top: 12px; }
-  .launch-note summary { cursor: pointer; color: var(--text); font-weight: 500; }
-  .launch-note code { font: 12.5px ui-monospace, "SF Mono", Menlo, monospace; background: var(--raised); border-radius: 8px; padding: 10px 12px; display: block; margin-top: 10px; overflow-x: auto; color: var(--text); }
+  .mock .btn { display: block; text-align: center; margin-top: 10px; padding: 6px 10px; border-radius: 7px; font-weight: 500; background: #2f6df6; color: #fff; }
+  .mock .btn.light { display: inline-block; background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line); margin-top: 8px; }
+  .mock .crumb { color: var(--faint); font-size: 12px; margin-bottom: 8px; }
+  .mock .ring { outline: 2px solid var(--ignite); outline-offset: 3px; }
+  .mock .pw { margin-top: 6px; padding: 6px 10px; border-radius: 7px; box-shadow: 0 0 0 1px var(--line); letter-spacing: 3px; color: var(--muted); }
+  .launch-note { margin-top: 28px; color: var(--muted); font-size: 15px; max-width: 760px; }
+  .launch-note details { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .launch-note summary { cursor: pointer; font: 500 12px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+  .launch-note code { font: 400 13px var(--mono); background: var(--ink); color: var(--paper); border-radius: 12px; padding: 14px 16px; display: block; margin-top: 12px; overflow-x: auto; }
 
   /* FAQ */
-  .faq h4 { font-size: 13px; font-weight: 500; color: var(--muted); margin: 32px 0 8px 4px; }
-  .faq .set { background: var(--panel); border-radius: 16px; overflow: hidden; }
-  .faq details + details { border-top: 1px solid var(--line); }
-  .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; font-size: 15px; font-weight: 500; }
+  .faq { max-width: 860px; }
+  .faq .group-label { display: block; margin: 40px 0 6px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq .set { border-top: 1px solid var(--ink); }
+  .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 0; font-weight: 700; font-size: 17.5px; letter-spacing: -0.01em; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid var(--faint); border-bottom: 1.5px solid var(--faint); transform: rotate(-45deg); transition: transform .2s; flex: none; }
+  .faq summary::after { content: "+"; font: 400 26px/1 var(--display); color: var(--muted); transition: transform .2s; flex: none; }
   .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq details p { color: var(--muted); font-size: 14.5px; margin: -4px 20px 18px; }
-  .faq .more { text-align: center; color: var(--muted); font-size: 14px; margin-top: 24px; }
+  .faq details p { color: var(--muted); margin: -6px 0 22px; max-width: 720px; }
+  .faq .more { color: var(--muted); margin-top: 28px; }
 
-  /* Closing and footer */
-  .closing { text-align: center; padding: 140px 0 120px; }
-  .closing h2 { font-size: clamp(36px, 5vw, 60px); }
-  .closing .intro { margin-bottom: 28px; }
-  footer { margin: 0 12px 12px; background: var(--panel); border-radius: 28px; padding: 48px 0 28px; font-size: 14px; }
-  footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
-  footer p { color: var(--muted); margin: 12px 0 0; max-width: 300px; }
-  footer h5 { font-size: 13px; font-weight: 600; margin: 0 0 12px; }
+  /* Closing call to action and footer, one ink block */
+  .finale { background: var(--ink); color: var(--on-ink); border-radius: 40px 40px 0 0; margin: 0 8px; padding: 96px 0 28px; }
+  @media (min-width: 640px) { .finale { margin: 0 12px; } }
+  .finale .kicker { color: var(--on-ink-muted); }
+  .finale .label { color: rgba(243, 241, 236, .55); }
+  .finale h2 { font-size: clamp(42px, 8.5vw, 124px); margin-bottom: 24px; }
+  .finale h2 .serif { font-style: italic; color: var(--ignite); }
+  .finale .intro { color: var(--on-ink-muted); }
+  .finale .button { background: var(--on-ink); color: var(--ink); }
+  .finale .button:hover { background: var(--brand); color: #fff; }
+  .finale .button.quiet { background: transparent; color: var(--on-ink); border-color: var(--on-ink-line); }
+  .finale .button.quiet:hover { border-color: var(--on-ink); background: transparent; }
+  .finale .cta { padding-bottom: 96px; border-bottom: 1px solid var(--on-ink-line); }
+  footer { padding-top: 48px; }
+  footer .cols { display: grid; grid-template-columns: 1fr; gap: 36px; }
+  @media (min-width: 640px) { footer .cols { grid-template-columns: 2fr 1fr 1fr; } }
+  footer .brand-line { display: flex; align-items: center; gap: 10px; font: 800 18px/1 var(--display); text-transform: uppercase; text-decoration: none; }
+  footer .brand-line img { width: 28px; height: 28px; }
+  footer p { color: var(--on-ink-muted); margin: 16px 0 0; max-width: 320px; font-family: var(--serif); font-size: 19px; line-height: 1.35; }
+  footer p a { color: var(--ignite); }
+  footer h5 { margin: 0 0 14px; }
   footer ul { list-style: none; margin: 0; padding: 0; }
-  footer li { margin: 0 0 8px; }
-  footer ul a { color: var(--muted); text-decoration: none; }
-  footer ul a:hover { color: var(--text); }
-  footer .base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; }
+  footer li a { display: block; padding: 10px 0; border-top: 1px solid var(--on-ink-line); text-decoration: none; font: 400 12px/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--on-ink); }
+  footer li:last-child a { border-bottom: 1px solid var(--on-ink-line); }
+  footer li a:hover { color: var(--ignite); }
+  footer .base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 48px; color: rgba(243, 241, 236, .5); }
 
   /* Note shown after Download is clicked */
-  .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 160%); z-index: 30; width: min(500px, calc(100% - 32px));
-    background: var(--raised); border-radius: 16px; box-shadow: 0 0 0 1px var(--line), 0 16px 48px rgba(0, 0, 0, .16); padding: 16px 44px 16px 18px;
-    font-size: 14px; color: var(--muted); transition: transform .35s ease; }
+  .toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 160%); z-index: 50; width: min(500px, calc(100% - 24px));
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 6px 0 var(--ink); padding: 16px 46px 16px 18px;
+    font-size: 15px; color: var(--muted); transition: transform .35s ease; }
   .toast.show { transform: translate(-50%, 0); }
-  .toast strong { color: var(--text); display: block; margin-bottom: 2px; font-weight: 600; }
+  .toast strong { color: var(--ink); display: block; margin-bottom: 2px; font-weight: 700; }
   .toast a { color: var(--brand); }
   .toast button { position: absolute; top: 10px; right: 10px; border: 0; background: none; color: var(--faint); font-size: 22px; line-height: 1; cursor: pointer; padding: 4px 8px; }
 
-  @media (max-width: 960px) {
-    .tools { grid-template-columns: 1fr 1fr; }
-    .groups, .launch-steps { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 720px) {
-    nav .links a.plain { display: none; }
-    nav { padding: 0 18px; }
-    .hero { margin: 8px; border-radius: 22px; }
-    .hero .top { padding-top: 40px; }
-    .shots { padding: 0 12px; }
-    section { padding-top: 88px; }
-    .promises, .plans { grid-template-columns: 1fr; }
-    .disk { padding: 20px; }
-    .disk .head { flex-direction: column; gap: 2px; }
-    footer { margin: 0 8px 8px; }
-    footer .cols { grid-template-columns: 1fr 1fr; }
-    footer .cols > :first-child { grid-column: 1 / -1; }
-  }
-  @media (max-width: 480px) {
-    .tools, .steps { grid-template-columns: 1fr; }
-  }
   @media (prefers-reduced-motion: reduce) {
+    .ticker-track, .badge svg { animation: none; }
     *, *::before, *::after { transition: none !important; }
   }
 </style>
 </head>
 <body>
 
-<header class="hero" id="top">
-  <nav>
-    <a class="brand" href="#top"><img src="images/icon.png" alt="">SwapMac</a>
-    <div class="links">
-      <a class="plain" href="#explained">Inside</a>
-      <a class="plain" href="#safety">Safety</a>
-      <a class="plain" href="#pricing">Pricing</a>
-      <a class="plain" href="#faq">FAQ</a>
+<div class="nav" id="nav">
+  <div class="nav-row">
+    <a class="pill brand" href="#top"><img src="images/icon.png" alt="">SwapMac</a>
+    <div class="pill links">
+      <a href="#explained">Inside</a>
+      <a href="#safety">Safety</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <a class="button small download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download</a>
-  </nav>
-  <div class="top">
-    <h1>Know what's filling your Mac <span class="hi">before you delete anything.</span></h1>
+    <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6.5h14M3 13.5h14"/></svg>
+    </button>
+  </div>
+  <div class="menu" id="menu">
+    <a href="#explained">Inside</a>
+    <a href="#safety">Safety</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="pill made"><i></i><span class="label">Made for macOS · by Triignite</span></span>
+    <h1>Know what's <span class="serif">filling</span> your Mac</h1>
+    <p class="sub">before you delete anything.</p>
     <p class="lead">SwapMac explains every folder in <b>plain English</b>: what it is, which app owns it, and whether it's safe to clear. You decide what goes, and it all goes to <b>the Trash first</b>.</p>
     <div class="ctas">
       <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">
@@ -261,29 +338,40 @@
         Download free</a>
       <a class="button quiet buy" href="#pricing">Get Pro for $19.99</a>
     </div>
-    <p class="fine">14 days of Pro free, no card · macOS 14 or later · Apple silicon and Intel · <a href="#first-launch">Opening it the first time</a></p>
-    <div class="tabs" role="tablist" aria-label="Screens">
-      <button role="tab" aria-selected="true" aria-controls="shot-dashboard">Dashboard</button>
-      <button role="tab" aria-selected="false" aria-controls="shot-explained">Explained</button>
-      <button role="tab" aria-selected="false" aria-controls="shot-map">Map</button>
+    <p class="fine label">14 days of Pro free, no card · macOS 14 or later · Apple silicon and Intel · <a href="#first-launch">Opening it the first time</a></p>
+    <div class="stage framed">
+      <div class="stage-bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div class="tabs" role="tablist" aria-label="Screens">
+          <button role="tab" aria-selected="true" aria-controls="shot-dashboard">Dashboard</button>
+          <button role="tab" aria-selected="false" aria-controls="shot-explained">Explained</button>
+          <button role="tab" aria-selected="false" aria-controls="shot-map">Map</button>
+        </div>
+        <span class="label">SwapMac</span>
+      </div>
+      <div class="shots">
+        <picture id="shot-dashboard" role="tabpanel">
+          <img src="images/dashboard.jpg" alt="SwapMac's Dashboard: disk use by category, what's safe to clear, and live CPU, memory, battery and network" width="1600" height="1052">
+        </picture>
+        <img id="shot-explained" role="tabpanel" hidden src="images/explained.jpg" alt="The Explained list: backups, caches, Docker and more, each with a safety badge" width="1600" height="1052" loading="lazy">
+        <img id="shot-map" role="tabpanel" hidden src="images/map.jpg" alt="The Layers map: folders as labelled blocks, colored by safety" width="1600" height="1052" loading="lazy">
+      </div>
     </div>
-  </div>
-  <div class="shots">
-    <picture id="shot-dashboard" role="tabpanel">
-      <source srcset="images/dashboard-dark.jpg" media="(prefers-color-scheme: dark)">
-      <img src="images/dashboard.jpg" alt="SwapMac's Dashboard: disk use by category, what's safe to clear, and live CPU, memory, battery and network" width="1600" height="1052">
-    </picture>
-    <img id="shot-explained" role="tabpanel" hidden src="images/explained.jpg" alt="The Explained list: backups, caches, Docker and more, each with a safety badge" width="1600" height="1052" loading="lazy">
-    <img id="shot-map" role="tabpanel" hidden src="images/map.jpg" alt="The Layers map: folders as labelled blocks, colored by safety" width="1600" height="1052" loading="lazy">
   </div>
 </header>
 
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>Scan<b>✦</b></span><span>Understand<b>✦</b></span><span>Review<b>✦</b></span><span>Undo<b>✦</b></span><span>Nothing leaves your Mac<b>✦</b></span>
+  <span>Scan<b>✦</b></span><span>Understand<b>✦</b></span><span>Review<b>✦</b></span><span>Undo<b>✦</b></span><span>Nothing leaves your Mac<b>✦</b></span>
+</div></div>
+
 <section id="explained">
   <div class="wrap">
-    <h2>“System Data”, <span class="hi">finally named.</span></h2>
+    <p class="kicker">Inside your Mac</p>
+    <h2>“System Data”, <span class="serif line">finally named</span></h2>
     <p class="intro">Storage settings show one big gray block and stop there. SwapMac names about 200 kinds of folders inside it, and says which ones rebuild themselves and which ones are yours.</p>
-    <div class="disk" id="disk" aria-label="Example: System Data split into named folders">
-      <div class="head"><b>Macintosh HD</b><span>Example · 212 GB free of 494 GB</span></div>
+    <div class="disk framed" id="disk" aria-label="Example: System Data split into named folders">
+      <div class="head"><b>Macintosh HD</b><span class="label">Example · 212 GB free of 494 GB</span></div>
       <div class="bar">
         <i style="--gb:110" title="Apps"></i>
         <i style="--gb:86" title="Documents"></i>
@@ -310,32 +398,26 @@
       <div class="foot"><span>35 GB rebuilds itself. 45 GB is worth a look first.</span><button type="button" id="replay">Replay</button></div>
     </div>
 
-    <div class="groups">
-      <div class="group">
-        <h3><span class="dot safe"></span>Safe to clear</h3>
-        <p>The app rebuilds it on its own.</p>
-        <div class="rows">
-          <div><b>Xcode build files</b><code>~/Library/Developer/Xcode/DerivedData</code><span>Xcode recreates it on the next build, which takes a little longer.</span></div>
-          <div><b>App caches</b><code>~/Library/Caches</code><span>Files apps keep so they load faster. Apps rebuild them as you use them.</span></div>
-        </div>
+    <div class="groups grid-lines cols-3">
+      <div>
+        <span class="label"><span class="dot safe"></span>[01] Safe to clear</span>
+        <p class="note">The app rebuilds it on its own.</p>
+        <div class="item"><b>Xcode build files</b><code>~/Library/Developer/Xcode/DerivedData</code><span>Xcode recreates it on the next build, which takes a little longer.</span></div>
+        <div class="item"><b>App caches</b><code>~/Library/Caches</code><span>Files apps keep so they load faster. Apps rebuild them as you use them.</span></div>
       </div>
-      <div class="group">
-        <h3><span class="dot check"></span>Check first</h3>
-        <p>It could matter to you, so it's never ticked for you.</p>
-        <div class="rows">
-          <div><b>iPhone and iPad backups</b><code>~/Library/Application Support/MobileSync</code><span>Safe to remove only if the device is backed up to iCloud or a newer backup exists.</span></div>
-          <div><b>Docker disk image</b><code>…/com.docker.docker/Data/vms/0/data/Docker.raw</code><span>It doesn't shrink when you delete images, so prune inside Docker.</span></div>
-          <div><b>Local AI models</b><code>~/.ollama/models · LM Studio · Hugging Face</code><span>Several gigabytes each. Keep the ones you still use.</span></div>
-          <div><b>Leftovers from removed apps</b><code>~/Library/Application Support/…</code><span>SwapMac says why it thinks the app is gone.</span></div>
-        </div>
+      <div>
+        <span class="label"><span class="dot check"></span>[02] Check first</span>
+        <p class="note">It could matter to you, so it's never ticked for you.</p>
+        <div class="item"><b>iPhone and iPad backups</b><code>~/Library/Application Support/MobileSync</code><span>Safe to remove only if the device is backed up to iCloud or a newer backup exists.</span></div>
+        <div class="item"><b>Docker disk image</b><code>…/com.docker.docker/Data/vms/0/data/Docker.raw</code><span>It doesn't shrink when you delete images, so prune inside Docker.</span></div>
+        <div class="item"><b>Local AI models</b><code>~/.ollama/models · LM Studio · Hugging Face</code><span>Several gigabytes each. Keep the ones you still use.</span></div>
+        <div class="item"><b>Leftovers from removed apps</b><code>~/Library/Application Support/…</code><span>SwapMac says why it thinks the app is gone.</span></div>
       </div>
-      <div class="group">
-        <h3><span class="dot keep"></span>Keep</h3>
-        <p>It's yours, or macOS needs it.</p>
-        <div class="rows">
-          <div><b>Photos and Music libraries</b><code>~/Pictures/Photos Library.photoslibrary</code><span>SwapMac shows how big it is and never offers to clear it.</span></div>
-          <div><b>Mail and Messages</b><code>~/Library/Mail · ~/Library/Messages</code><span>Protected by a built-in never-delete list, whatever a rule or a click says.</span></div>
-        </div>
+      <div>
+        <span class="label"><span class="dot keep"></span>[03] Keep</span>
+        <p class="note">It's yours, or macOS needs it.</p>
+        <div class="item"><b>Photos and Music libraries</b><code>~/Pictures/Photos Library.photoslibrary</code><span>SwapMac shows how big it is and never offers to clear it.</span></div>
+        <div class="item"><b>Mail and Messages</b><code>~/Library/Mail · ~/Library/Messages</code><span>Protected by a built-in never-delete list, whatever a rule or a click says.</span></div>
       </div>
     </div>
   </div>
@@ -343,42 +425,43 @@
 
 <section>
   <div class="wrap">
-    <h2>One app for your disk <span class="hi">and your Mac.</span></h2>
+    <p class="kicker">Everything in the app</p>
+    <h2>One app for your disk <span class="serif line">and your Mac</span></h2>
     <p class="intro">Free and Pro are marked up front, so nothing surprises you after a scan.</p>
-    <div class="tools">
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg><span class="tag">FREE</span></div><h3>Scan and explain</h3><p>Your whole Mac or any folder, with a plain-English note for everything SwapMac recognises.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 12h9M12.5 3.5v17M12.5 8h8"/></svg><span class="tag">FREE</span></div><h3>Storage map</h3><p>Layers, tiles and a list, colored by safety. Double-click to go in, Esc to go back.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v12.5H7z"/><path d="M14 3.5V8h4.5M10 13h5M10 16.5h3"/></svg><span class="tag">FREE</span></div><h3>Large old files</h3><p>Big files you haven't opened in months, by size, age and type.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3.5l2.5-6 4 11 2.5-5H21"/></svg><span class="tag">FREE</span></div><h3>Monitor</h3><p>Live CPU, memory, network and battery, with notes on what common processes do.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8M7.8 6.6a7 7 0 1 0 8.4 0"/></svg><span class="tag">FREE</span></div><h3>Startup items</h3><p>Background helpers that start with your Mac, with the broken ones flagged.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M9 6V4h6v2M6 6l1 14h10l1-14"/></svg><span class="tag pro">PRO</span></div><h3>Safe cleanup</h3><p>Review every cache and build file that rebuilds itself, then move them to the Trash together.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m9 9 6 6M15 9l-6 6"/></svg><span class="tag pro">PRO</span></div><h3>Uninstaller</h3><p>Remove an app with the caches, settings and support files it leaves behind.</p></div>
-      <div class="tool"><div class="head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="3"/><path d="M7.5 12h.01M11 12h5.5"/></svg><span class="tag pro">PRO</span></div><h3>Quick Search and menu bar</h3><p>Press ⌥⇧Space in any app to find a file. Free space, CPU and memory one click away.</p></div>
+    <div class="grid-lines cols-4">
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[01]</span><span class="tag">Free</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></div><h3>Scan and explain</h3><p>Your whole Mac or any folder, with a plain-English note for everything SwapMac recognises.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[02]</span><span class="tag">Free</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 12h9M12.5 3.5v17M12.5 8h8"/></svg></div><h3>Storage map</h3><p>Layers, tiles and a list, colored by safety. Double-click to go in, Esc to go back.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[03]</span><span class="tag">Free</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v12.5H7z"/><path d="M14 3.5V8h4.5M10 13h5M10 16.5h3"/></svg></div><h3>Large old files</h3><p>Big files you haven't opened in months, by size, age and type.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[04]</span><span class="tag">Free</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3.5l2.5-6 4 11 2.5-5H21"/></svg></div><h3>Monitor</h3><p>Live CPU, memory, network and battery, with notes on what common processes do.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[05]</span><span class="tag">Free</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8M7.8 6.6a7 7 0 1 0 8.4 0"/></svg></div><h3>Startup items</h3><p>Background helpers that start with your Mac, with the broken ones flagged.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[06]</span><span class="tag pro">Pro</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M9 6V4h6v2M6 6l1 14h10l1-14"/></svg></div><h3>Safe cleanup</h3><p>Review every cache and build file that rebuilds itself, then move them to the Trash together.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[07]</span><span class="tag pro">Pro</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m9 9 6 6M15 9l-6 6"/></svg></div><h3>Uninstaller</h3><p>Remove an app with the caches, settings and support files it leaves behind.</p></div>
+      <div class="tool"><div class="top"><span class="meta"><span class="label">[08]</span><span class="tag pro">Pro</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="3"/><path d="M7.5 12h.01M11 12h5.5"/></svg></div><h3>Quick Search and menu bar</h3><p>Press ⌥⇧Space in any app to find a file. Free space, CPU and memory one click away.</p></div>
     </div>
   </div>
 </section>
 
-<section id="safety">
+<section id="safety" class="ink">
   <div class="wrap">
-    <h2>Careful <span class="hi">by design.</span></h2>
-    <p class="intro">Two promises SwapMac keeps, whatever you click.</p>
-    <div class="promises">
+    <p class="kicker">Two promises SwapMac keeps, whatever you click.</p>
+    <h2>Careful <span class="serif line">by design</span></h2>
+    <div class="promises" style="margin-top:48px">
       <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M9 6V4h6v2M6 6l1 14h10l1-14"/><path d="m10 13 2-2 2 2M12 11v5"/></svg>
+        <span class="label">[01] Trash first</span>
         <h3>Nothing is deleted.</h3>
         <p>Every cleanup moves files to the Trash, and Cleanup History puts them back until you empty it. A never-delete list guards macOS, your main folders, mail, passwords, iCloud Drive and Photos.</p>
-        <div class="rows receipt" aria-label="Example of a cleanup summary">
-          <div><span class="what">Xcode build files<small>~/Library/Developer/Xcode/DerivedData</small></span><span class="size">6.2 GB</span><span class="state"><span class="dot safe"></span>Moved</span></div>
-          <div><span class="what">Spotify cache<small>~/Library/Caches/com.spotify.client</small></span><span class="size">2.1 GB</span><span class="state"><span class="dot safe"></span>Moved</span></div>
-          <div><span class="what">Slack cache<small>Skipped: Slack is open</small></span><span class="size">0.4 GB</span><span class="state"><span class="dot check"></span>Skipped</span></div>
-          <div class="total"><span>8.3 GB in the Trash</span><button type="button" tabindex="-1" aria-hidden="true">Put All Back</button></div>
+        <div class="receipt" aria-label="Example of a cleanup summary">
+          <div class="row"><span class="what">Xcode build files<small>~/Library/Developer/Xcode/DerivedData</small></span><span>6.2 GB</span><span class="state"><span class="dot safe"></span>Moved</span></div>
+          <div class="row"><span class="what">Spotify cache<small>~/Library/Caches/com.spotify.client</small></span><span>2.1 GB</span><span class="state"><span class="dot safe"></span>Moved</span></div>
+          <div class="row"><span class="what">Slack cache<small>Skipped: Slack is open</small></span><span>0.4 GB</span><span class="state"><span class="dot check"></span>Skipped</span></div>
+          <div class="row total"><span>8.3 GB in the Trash</span><button type="button" tabindex="-1" aria-hidden="true">Put All Back</button></div>
         </div>
       </div>
       <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+        <span class="label">[02] Private</span>
         <h3>Nothing leaves your Mac.</h3>
         <p>Scans, file names and results stay on your Mac. SwapMac only goes online to check for updates and, with Pro, to check your license.</p>
-        <div class="rows check-rows">
+        <div class="checks">
           <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3"/><path d="M4.5 17a5.5 5.5 0 0 1 11 0"/></svg>No account to make</div>
           <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15V9M8 15V5M13 15v-4M17 3 3 17"/></svg>No analytics, no ads</div>
           <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a6 6 0 0 1 10.5-4M16 10a6 6 0 0 1-10.5 4M14.5 2.5V6H11M5.5 17.5V14H9"/></svg>Update check once a day, and you can turn it off</div>
@@ -386,42 +469,50 @@
         </div>
       </div>
     </div>
-    <div class="steps">
-      <div><b><em>1</em>Scan</b><p>Read-only. Nothing changes while it runs.</p></div>
-      <div><b><em>2</em>Understand</b><p>What each item is, who owns it, what clearing it does.</p></div>
-      <div><b><em>3</em>Review</b><p>Only safe items start ticked. Items an open app is using are left out.</p></div>
-      <div><b><em>4</em>Undo</b><p>Put Back from Cleanup History until you empty the Trash.</p></div>
+    <div class="steps grid-lines cols-4">
+      <div><span class="label">[01]</span><span class="step-n">01</span><h3>Scan</h3><p>Read-only. Nothing changes while it runs.</p></div>
+      <div><span class="label">[02]</span><span class="step-n">02</span><h3>Understand</h3><p>What each item is, who owns it, what clearing it does.</p></div>
+      <div><span class="label">[03]</span><span class="step-n">03</span><h3>Review</h3><p>Only safe items start ticked. Items an open app is using are left out.</p></div>
+      <div><span class="label">[04]</span><span class="step-n">04</span><h3>Undo</h3><p>Put Back from Cleanup History until you empty the Trash.</p></div>
     </div>
   </div>
 </section>
 
 <section id="pricing">
-  <div class="wrap">
-    <h2>Pay once. <span class="hi">Keep it.</span></h2>
+  <div class="wrap center">
+    <p class="kicker">One price, no subscription</p>
+    <h2>Pay once. <span class="serif line">Keep it.</span></h2>
     <p class="intro">Try every Pro feature free for 14 days, no card needed. When the trial ends, Pro features pause; nothing is deleted and your history stays.</p>
     <div class="plans">
       <div class="plan">
-        <h3>Free</h3>
+        <span class="label">[01] Free</span>
+        <div class="name">Free</div>
         <div class="price"><sup>$</sup>0</div>
         <div class="per">forever</div>
-        <div class="rows">
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Scan your whole Mac or any folder</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Explanations and safety labels</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Storage map, Large Files and the Monitor</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Move items to the Trash one at a time</div>
-        </div>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Scan your whole Mac or any folder</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Explanations and safety labels</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Storage map, Large Files and the Monitor</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Move items to the Trash one at a time</li>
+        </ul>
         <a class="button quiet download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
       </div>
       <div class="plan pro">
-        <h3>SwapMac Pro <span class="tag pro">ONE PAYMENT</span></h3>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><defs><path id="ring" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
+            <text><textPath href="#ring">MADE FOR MACOS • BY TRIIGNITE • MADE FOR MACOS • </textPath></text></svg>
+          <span>✦</span>
+        </div>
+        <span class="label">[02] One payment</span>
+        <div class="name">SwapMac Pro</div>
         <div class="price"><sup>$</sup>19.99</div>
         <div class="per">No subscription · lifetime updates</div>
-        <div class="rows">
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Everything in Free, on up to 3 Macs</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Safe cleanup in one go</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Uninstaller with leftovers</div>
-          <div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Quick Search, menu bar stats and themes</div>
-        </div>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Everything in Free, on up to 3 Macs</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Safe cleanup in one go</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Uninstaller with leftovers</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 6"/></svg>Quick Search, menu bar stats and themes</li>
+        </ul>
         <a class="button buy" href="#pricing">Buy SwapMac Pro</a>
       </div>
     </div>
@@ -429,60 +520,60 @@
   </div>
 </section>
 
-<section id="first-launch">
+<section id="first-launch" style="padding-top:0">
   <div class="wrap">
-    <div class="launch">
-      <h2>Opening SwapMac the first time</h2>
-      <p class="intro">SwapMac isn't notarized by Apple yet, so macOS asks you to confirm it once. It takes about 20 seconds, and you never need to do it again, not even after updates.</p>
-      <div class="launch-steps">
-        <div>
-          <div class="n">1</div>
-          <h3>Open SwapMac, then click Done</h3>
-          <p>Drag SwapMac to Applications and open it. macOS says it couldn't verify the app. Click Done; nothing is wrong with your Mac.</p>
-          <div class="mock" aria-hidden="true">
-            <svg class="warn" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1.8 20.5h20.4z"/><path d="M12 9.5v5M12 17.3v.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-            <strong>"SwapMac.app" Not Opened</strong>
-            <span class="muted">Apple could not verify "SwapMac.app" is free of malware…</span>
-            <span class="btn ring">Done</span>
-          </div>
-        </div>
-        <div>
-          <div class="n">2</div>
-          <h3>Find it in Privacy &amp; Security</h3>
-          <p>Open System Settings → Privacy &amp; Security and scroll down to Security. Click <strong>Open Anyway</strong> next to SwapMac.</p>
-          <div class="mock" aria-hidden="true">
-            <div class="crumb">System Settings › Privacy &amp; Security › Security</div>
-            <span class="muted">"SwapMac.app" was blocked to protect your Mac.</span><br>
-            <span class="btn light ring">Open Anyway</span>
-          </div>
-        </div>
-        <div>
-          <div class="n">3</div>
-          <h3>Confirm with your password</h3>
-          <p>Enter your Mac's password, then click <strong>Open Anyway</strong> once more. SwapMac opens, and from now on it opens normally.</p>
-          <div class="mock" aria-hidden="true">
-            <strong>Privacy &amp; Security</strong>
-            <span class="muted">Enter your password to allow this.</span>
-            <div class="pw">••••••••</div>
-            <span class="btn ring">Open Anyway</span>
-          </div>
+    <p class="kicker">About 20 seconds, once</p>
+    <h2>Opening SwapMac <span class="serif line">the first time</span></h2>
+    <p class="intro">SwapMac isn't notarized by Apple yet, so macOS asks you to confirm it once. It takes about 20 seconds, and you never need to do it again, not even after updates.</p>
+    <div class="launch-steps">
+      <div>
+        <span class="label">[01]</span>
+        <h3>Open SwapMac, then click Done</h3>
+        <p>Drag SwapMac to Applications and open it. macOS says it couldn't verify the app. Click Done; nothing is wrong with your Mac.</p>
+        <div class="mock" aria-hidden="true">
+          <svg class="warn" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1.8 20.5h20.4z"/><path d="M12 9.5v5M12 17.3v.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          <strong>"SwapMac.app" Not Opened</strong>
+          <span class="muted">Apple could not verify "SwapMac.app" is free of malware…</span>
+          <span class="btn ring">Done</span>
         </div>
       </div>
-      <div class="launch-note">
-        Why does this happen? Apple checks apps whose developers pay for its developer program. SwapMac will be notarized soon; until then, every download is the same file you see here, signed so that only genuine SwapMac updates can install.
-        <details><summary>Prefer Terminal?</summary>
-          <p>After moving SwapMac to Applications, this removes the download flag so it opens straight away:</p>
-          <code>xattr -dr com.apple.quarantine /Applications/SwapMac.app</code>
-        </details>
+      <div>
+        <span class="label">[02]</span>
+        <h3>Find it in Privacy &amp; Security</h3>
+        <p>Open System Settings → Privacy &amp; Security and scroll down to Security. Click <strong>Open Anyway</strong> next to SwapMac.</p>
+        <div class="mock" aria-hidden="true">
+          <div class="crumb">System Settings › Privacy &amp; Security › Security</div>
+          <span class="muted">"SwapMac.app" was blocked to protect your Mac.</span><br>
+          <span class="btn light ring">Open Anyway</span>
+        </div>
       </div>
+      <div>
+        <span class="label">[03]</span>
+        <h3>Confirm with your password</h3>
+        <p>Enter your Mac's password, then click <strong>Open Anyway</strong> once more. SwapMac opens, and from now on it opens normally.</p>
+        <div class="mock" aria-hidden="true">
+          <strong>Privacy &amp; Security</strong>
+          <span class="muted">Enter your password to allow this.</span>
+          <div class="pw">••••••••</div>
+          <span class="btn ring">Open Anyway</span>
+        </div>
+      </div>
+    </div>
+    <div class="launch-note">
+      Why does this happen? Apple checks apps whose developers pay for its developer program. SwapMac will be notarized soon; until then, every download is the same file you see here, signed so that only genuine SwapMac updates can install.
+      <details><summary>Prefer Terminal?</summary>
+        <p>After moving SwapMac to Applications, this removes the download flag so it opens straight away:</p>
+        <code>xattr -dr com.apple.quarantine /Applications/SwapMac.app</code>
+      </details>
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap narrow faq">
-    <h2>Questions.</h2>
-    <h4>General</h4>
+<section id="faq" style="padding-top:0">
+  <div class="wrap faq">
+    <p class="kicker">Before you ask</p>
+    <h2>Questions, <span class="serif line">answered</span></h2>
+    <span class="label group-label">[01] General</span>
     <div class="set">
       <details><summary>What is "System Data" on a Mac?</summary>
         <p>Everything macOS doesn't file under apps, documents or photos: caches, logs, app support files, local Time Machine snapshots, iPhone backups, developer tools and leftovers from removed apps. Some of it rebuilds itself and is safe to clear; some of it is yours. SwapMac tells you which is which.</p></details>
@@ -495,14 +586,14 @@
       <details><summary>How do I remove SwapMac completely?</summary>
         <p>Choose SwapMac → Uninstall SwapMac…. It turns off opening at login, can deactivate your license, and moves the app and everything it keeps on your Mac to the Trash, then shows what it removed.</p></details>
     </div>
-    <h4>Privacy and safety</h4>
+    <span class="label group-label">[02] Privacy and safety</span>
     <div class="set">
       <details><summary>Can SwapMac delete something important?</summary>
         <p>It moves things to the Trash instead of deleting them, and Cleanup History can put them back until you empty the Trash. A never-delete list stops it touching macOS itself, your main folders, mail, messages, passwords, iCloud Drive and Photos libraries, whatever a rule or a click says.</p></details>
       <details><summary>What does SwapMac send over the internet?</summary>
         <p>An update check about once a day and, if you have Pro, a license check about once a week. Never file names, scan results or usage.</p></details>
     </div>
-    <h4>Buying Pro</h4>
+    <span class="label group-label">[03] Buying Pro</span>
     <div class="set">
       <details><summary>What do I get with Pro, and for how long?</summary>
         <p>Every Pro feature, for a one-time $19.99, with lifetime updates. One license works on up to 3 Macs; to move it, click Deactivate on This Mac in Settings → Pro. If it isn't right for you, ask for a refund within 14 days of purchase at <a href="mailto:content@triignite.com">content@triignite.com</a>.</p></details>
@@ -513,46 +604,46 @@
   </div>
 </section>
 
-<section class="closing">
+<div class="finale">
   <div class="wrap">
-    <h2>See what's really <span class="hi">on your Mac.</span></h2>
-    <p class="intro">Scan it, read what everything is, and clear only what you choose.</p>
-    <div class="ctas">
-      <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
-      <a class="button quiet buy" href="#pricing">Get Pro for $19.99</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <a class="brand" href="#top"><img src="images/icon.png" alt="">SwapMac</a>
-        <p>See what's filling your Mac and clear it safely. Everything goes to the Trash first.</p>
-        <p>Crafted by <a href="https://www.triignite.com/">Triignite</a>.</p>
-      </div>
-      <div>
-        <h5>SwapMac</h5>
-        <ul>
-          <li><a class="download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#first-launch">First launch</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Help</h5>
-        <ul>
-          <li><a href="mailto:content@triignite.com">Contact</a></li>
-          <li><a href="mailto:content@triignite.com?subject=SwapMac%20beta&body=I%27d%20like%20to%20help%20test%20SwapMac.%20My%20Mac%3A%20">Join the beta</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
+    <div class="cta center">
+      <p class="kicker">Ready when you are</p>
+      <h2>See what's really <span class="serif line">on your Mac</span></h2>
+      <p class="intro">Scan it, read what everything is, and clear only what you choose.</p>
+      <div class="ctas">
+        <a class="button download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download free</a>
+        <a class="button quiet buy" href="#pricing">Get Pro for $19.99</a>
       </div>
     </div>
-    <div class="base"><span>© 2026 Triignite</span><span>Made for macOS.</span></div>
+    <footer>
+      <div class="cols">
+        <div>
+          <a class="brand-line" href="#top"><img src="images/icon.png" alt="">SwapMac</a>
+          <p>See what's filling your Mac and clear it safely. Everything goes to the Trash first.</p>
+          <p>Crafted by <a href="https://www.triignite.com/">Triignite</a>.</p>
+        </div>
+        <div>
+          <h5 class="label">SwapMac</h5>
+          <ul>
+            <li><a class="download" href="https://github.com/noobiekode/SwapMac-releases/raw/main/SwapMac.dmg">Download</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#first-launch">First launch</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="label">Help</h5>
+          <ul>
+            <li><a href="mailto:content@triignite.com">Contact</a></li>
+            <li><a href="mailto:content@triignite.com?subject=SwapMac%20beta&body=I%27d%20like%20to%20help%20test%20SwapMac.%20My%20Mac%3A%20">Join the beta</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="base label"><span>© 2026 Triignite</span><span>Made for macOS.</span></div>
+    </footer>
   </div>
-</footer>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">
   <button type="button" aria-label="Close">×</button>
@@ -605,6 +696,17 @@
     disk.classList.remove("named");
     setTimeout(name, 900);
   });
+
+  // On phones the menu button opens the dropdown; picking a link closes it.
+  const nav = document.getElementById("nav");
+  const menuButton = nav.querySelector(".menu-button");
+  menuButton.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", open);
+  });
+  for (const link of nav.querySelectorAll(".menu a")) {
+    link.addEventListener("click", () => { nav.classList.remove("open"); menuButton.setAttribute("aria-expanded", false); });
+  }
 </script>
 </body>
 </html>
